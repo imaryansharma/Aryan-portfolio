@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aryan Sharma | Product & Project Manager with experience at McDonald's, Vodafone & Tata Play." />
+  <meta name="keywords" content="Product Manager, Project Manager, Digital Product, Web, Mobile, APIs" />
+  <meta name="author" content="Aryan Sharma" />
+  <title>Aryan Sharma | Product & Project Manager</title>
+
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Social Media Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #f2b632;
+      --primary-dark: #e0a72b;
+      --bg-dark: #121212;
+      --bg-darker: #0a0a0a;
+      --bg-light: #f9f9f9;
+      --bg-lighter: #ffffff;
+      --text-light: #e0e0e0;
+      --text-lighter: #ffffff;
+      --text-dark: #333333;
+      --text-darker: #222222;
+      --card-dark: #1e1e1e;
+      --card-light: #ffffff;
+      --nav-dark: #1f1f1f;
+      --nav-light: #ffffff;
+      --hero-dark: #222222;
+      --hero-light: #2c3e50;
+      --transition: all 0.3s ease;
+      --nav-text-dark: #ffffff; /* Added for navbar text in dark mode */
+      --nav-text-light: #333333; /* Added for navbar text in light mode */
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: var(--transition);
+      line-height: 1.6;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .navbar {
+      transition: var(--transition);
+    }
+
+    .navbar-dark-mode {
+      background-color: var(--nav-dark);
+    }
+
+    .navbar-light-mode {
+      background-color: var(--nav-light);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero {
+      padding: 120px 20px;
+      transition: var(--transition);
+    }
+
+    .hero.dark-mode {
+      background-color: var(--hero-dark);
+      color: var(--text-lighter);
+    }
+
+    .hero.light-mode {
+      background-color: var(--hero-light);
+      color: var(--text-lighter);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .hero img {
+      max-width: 50%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0%;
+      border: 5px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .hero img:hover {
+      transform: scale(1.03);
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .services .card {
+      border: none;
+      transition: var(--transition);
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .dark-mode .services .card {
+      background: var(--card-dark);
+      color: var(--text-light);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .light-mode .services .card {
+      background: var(--card-light);
+      color: var(--text-dark);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .services .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .services .card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      transition: var(--transition);
+    }
+
+    .dark-mode footer {
+      background-color: var(--bg-darker);
+      color: var(--text-light);
+    }
+
+    .light-mode footer {
+      background-color: var(--bg-lighter);
+      color: var(--text-dark);
+      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      font-size: 1.5rem;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .dark-mode .social-icons a {
+      color: var(--text-light);
+    }
+
+    .light-mode .social-icons a {
+      color: var(--text-dark);
+    }
+
+    .social-icons a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .toggle-switch {
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .dark-mode .toggle-switch {
+      color: var(--primary);
+      background-color: rgba(242, 182, 50, 0.1);
+    }
+
+    .light-mode .toggle-switch {
+      color: var(--primary-dark);
+      background-color: rgba(242, 182, 50, 0.1);
+    }
+
+    .toggle-switch:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-warning {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: #000;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-warning:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-warning {
+      color: var(--primary);
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+
+    .dark-mode .btn-outline-light {
+      border-color: var(--text-light);
+      color: var(--text-light);
+    }
+
+    .dark-mode .btn-outline-light:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .light-mode .btn-outline-light {
+      border-color: var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .light-mode .btn-outline-light:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+    }
+
+    .dark-mode .modal-content {
+      background-color: var(--card-dark);
+    }
+
+    .light-mode .modal-content {
+      background-color: var(--card-light);
+    }
+
+    .dark-mode .modal-header {
+      border-bottom: 1px solid #333;
+    }
+
+    .light-mode .modal-header {
+      border-bottom: 1px solid #eee;
+    }
+
+    .dark-mode .modal-title {
+      color: var(--text-lighter);
+    }
+
+    .light-mode .modal-title {
+      color: var(--text-darker);
+    }
+
+    .dark-mode .modal-body {
+      color: var(--text-light);
+    }
+
+    .light-mode .modal-body {
+      color: var(--text-dark);
+    }
+
+    .dark-mode .modal-body h4 {
+      color: var(--primary);
+    }
+
+    .light-mode .modal-body h4 {
+      color: var(--primary-dark);
+    }
+
+    .dark-mode .navbar-brand,
+    .dark-mode .nav-link {
+    color: var(--nav-text-dark) !important;
+    }
+
+    .light-mode .navbar-brand,
+    .light-mode .nav-link {
+    color: var(--nav-text-light) !important;
+    }
+
+    .dark-mode .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .light-mode .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    .light-mode ::-webkit-scrollbar-track {
+      background: var(--bg-light);
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 80px 20px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero img {
+        max-width: 70%;
+        margin-top: 30px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .services .card {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero .d-flex {
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark-mode">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top shadow-sm px-4">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">Aryan Sharma</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#linkedinPosts">Posts</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn toggle-switch" onclick="toggleTheme()">
+              <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero dark-mode" id="home">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h1>Digital Product Development for Disruptors</h1>
+          <p>
+            I help businesses turn ideas into impactful digital products. With 4 years of experience in Product & Project Management,
+            I've worked with brands like McDonald's, Vodafone, and Tata Play to deliver across web, mobile, and API-based platforms.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <button class="btn btn-warning fw-semibold" onclick="openModal('workHistory')">Work History</button>
+            <button class="btn btn-outline-light fw-semibold" onclick="openModal('resume')">View Resume</button>
+            <button class="btn btn-outline-warning fw-semibold" onclick="location.href='mailto:aryansharma73095@gmail.com'">Contact Me</button>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center mt-4 mt-lg-0" data-aos="fade-left">
+          <img src="D:\portfoliowebsitetry\AryanImage\aryanimg.jpeg" alt="Aryan Sharma" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section py-5" id="services">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">What I Do</h2>
+      <div class="row g-4 services">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-4 h-100">
+            <div class="card-body">
+              <h3>Product Management</h3>
+              <p>From roadmap planning to go-live execution with real business impact. I provide real-time solutions to ensure seamless product development and strategic alignment with business objectives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-4 h-100">
+            <div class="card-body">
+              <h3>Web Development</h3>
+              <p>Specializing in high-performance web apps built with modern frameworks and integrated with APIs. I have a strong understanding of RESTful APIs, ensuring seamless and efficient backend communication with frontend systems.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card p-4 h-100">
+            <div class="card-body">
+              <h3>App Development</h3>
+              <p>With extensive experience in both Flutter and Native app development, I build scalable and high-performing applications tailored to startups and enterprises. I manage the entire product lifecycle, from ideation to launch, ensuring alignment with user needs and business goals.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5" data-aos="fade-up">
+        <p class="lead">Good hands-on experience with tools like <strong>Jira</strong>, <strong>Confluence</strong>, <strong>Figma</strong>, and <strong>tray.io</strong>, enabling efficient project management, collaboration, and seamless integration workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest LinkedIn Posts Section -->
+  <section class="section py-5" id="linkedinPosts">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">Latest LinkedIn Posts</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8" data-aos="fade-up">
+          <div class="card p-4">
+            <div class="card-body">
+              <div class="linkedin-post-placeholder">
+                <i class="fab fa-linkedin fa-4x mb-3" style="color: var(--primary);"></i>
+                <h4>Connect with me on LinkedIn</h4>
+                <p>View my latest posts and professional updates by visiting my LinkedIn profile.</p>
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7311245063722782720/" target="_blank" class="btn btn-warning fw-semibold">Visit My Post</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© <span id="currentYear"></span> Aryan Sharma. All Rights Reserved.</p>
+      <div class="social-icons mb-3">
+        <a href="https://www.linkedin.com/in/imaryansharma/" target="_blank" class="fab fa-linkedin"></a>
+        <a href="NA" target="_blank" class="fab fa-twitter"></a>
+        <a href="https://github.com/imaryansharma" target="_blank" class="fab fa-github"></a>
+        <a href="mailto:aryansharma73095@gmail.com" class="fas fa-envelope"></a>
+      </div>
+      <p class="small">Designed & Developed with ❤️ by Aryan Sharma</p>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <div class="back-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Resume Modal -->
+  <div class="modal fade" id="resumeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">My Resume</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>You can download my resume below:</p>
+          <a href="AryanResume/aryan_sharma_resume.pdf" class="btn btn-warning fw-semibold" download>Download Resume</a>
+          <div class="mt-4">
+            <p>Or view it directly here:</p>
+            <iframe src="AryanResume/aryan_sharma_resume.pdf" width="100%" height="500px" style="border: none;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work History Modal -->
+  <div class="modal fade" id="workHistoryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Work History</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Assistant Product Manager, Lepton Software (08/2024 – Present, Telecom)</h4>
+              <ul>
+                <li>Handling Vi (Vodafone) & Dialog WFM flow, API requirement and development.</li>
+                <li>Extensive experience in analysis, design, and implementation of project requirements.</li>
+                <li>Working with tools such as WFM and Smart Inventory.</li>
+                <li>Handling test flow for tickets raised via HPSM, OWS, NMS, etc.</li>
+                <li>Utilizing Oracle SQL Developer & pgAdmin to analyze API errors and ticket issues.</li>
+                <li>Conducting API testing in Postman for functional validation.</li>
+                <li>Leading a team of 4 developers (backend & frontend).</li>
+                <li>Working on MySQL, Postgres, APIs, and Inhouse tools.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Assistant Integration Manager, DotPe (10/2021 – 01/2024, F&B, FinTech)</h4>
+              <ul>
+                <li>Partnered with Support Manager and IT Product teams to prioritize and address support tickets 24/7, ensuring alignment with business goals.</li>
+                <li>Provide product support and maintenance to the clients for specific ERP solutions.</li>
+                <li>Initiated API Integrations for all businesses using PIPE. (Postman, Swiggy, Zomato)</li>
+                <li>Worked on Data and Strategy. Used Redash & Snowflake to fetch the db data.</li>
+                <li>Fixed TAT, SLA for all FTP and ADSR integration ticket issues followed by mentioned KPI.</li>
+                <li>Handled sales dip and ftp data for big enterprise clients like Blue Tokai, McD, Biryani Blues, Nirula's, Social, Pizza Wings, MOD, Hatti Kapi, etc.</li>
+                <li>Led website/app integration with 3PO systems & payment gateways.</li>
+                <li>Handled big merchants like McD, Hatti Kaapi, MOD, Pizza Wings (Website/App and Bifrost integration).</li>
+                <li>Handled Inventory and Supply Chain complexities.</li>
+                <li>Handled product requirements (ERP, CRM, POS).</li>
+                <li>Proficient in generating insightful reports and maintaining stringent turnaround time (TAT) standards.</li>
+                <li>Supervised a team of 6 Solution Managers while handling inventory and integrations.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Product Analyst, Planet Spark (04/2021 - 08/2021, EdTech)</h4>
+              <ul>
+                <li>Analyzed product performance, business insights for data-driven decisions.</li>
+                <li>Handled the CRM (Salesforce) for lead management and user data tracking.</li>
+                <li>Managed B2B sales projects for product delivery and customer satisfaction.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Web Developer, Skillvertex (01/2021 - 03/2021, EdTech)</h4>
+              <ul>
+                <li>Developed website using WordPress and HTML/CSS (Front-end)</li>
+                <li>Worked on backend data management.</li>
+                <li>Website – skillvertex.in</li>
+                <li>Handled microservices , fr & cr</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Initialize AOS animation library
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Toggle Dark/Light Mode - Updated to handle navbar text colors
+function toggleTheme() {
+  const body = document.body;
+  const hero = document.querySelector('.hero');
+  const navbar = document.querySelector('.navbar');
+  
+  body.classList.toggle("dark-mode");
+  body.classList.toggle("light-mode");
+  hero.classList.toggle("dark-mode");
+  hero.classList.toggle("light-mode");
+  navbar.classList.toggle("navbar-dark-mode");
+  navbar.classList.toggle("navbar-light-mode");
+  
+  // Update theme icon and text
+  const themeIcon = document.getElementById('themeIcon');
+  const themeText = document.getElementById('themeText');
+  
+  if (body.classList.contains('dark-mode')) {
+    themeIcon.textContent = '🌙';
+    themeText.textContent = 'Dark Mode';
+  } else {
+    themeIcon.textContent = '☀️';
+    themeText.textContent = 'Light Mode';
+  }
+  
+  // Store preference in localStorage
+  const isDarkMode = body.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', isDarkMode);
+}
+
+    // Check for saved theme preference - Updated to handle navbar text colors
+if (localStorage.getItem('darkMode') === 'false') {
+  const body = document.body;
+  const hero = document.querySelector('.hero');
+  const navbar = document.querySelector('.navbar');
+  
+  body.classList.remove('dark-mode');
+  body.classList.add('light-mode');
+  hero.classList.remove('dark-mode');
+  hero.classList.add('light-mode');
+  navbar.classList.remove('navbar-dark-mode');
+  navbar.classList.add('navbar-light-mode');
+  
+  // Update theme icon and text
+  document.getElementById('themeIcon').textContent = '☀️';
+  document.getElementById('themeText').textContent = 'Light Mode';
+}
+
+    // Open Modal
+    function openModal(type) {
+      if (type === "resume") {
+        var myModal = new bootstrap.Modal(document.getElementById('resumeModal'));
+        myModal.show();
+      } else if (type === "workHistory") {
+        var myModal = new bootstrap.Modal(document.getElementById('workHistoryModal'));
+        myModal.show();
+      }
+    }
+
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+      const backToTopButton = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
