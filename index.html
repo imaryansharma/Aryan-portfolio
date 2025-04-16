@@ -53,8 +53,8 @@
       --hero-dark: #222222;
       --hero-light: #2c3e50;
       --transition: all 0.3s ease;
-      --nav-text-dark: #ffffff; /* Added for navbar text in dark mode */
-      --nav-text-light: #333333; /* Added for navbar text in light mode */
+      --nav-text-dark: #ffffff;
+      --nav-text-light: #333333;
     }
 
     body {
@@ -332,6 +332,11 @@
     color: var(--nav-text-light) !important;
     }
 
+    /* Fix for close button in dark mode */
+    .dark-mode .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
     .dark-mode .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
@@ -389,6 +394,117 @@
       transform: translateY(-3px);
     }
 
+    /* Timeline styling */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--primary);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      border: 3px solid var(--bg-dark);
+    }
+
+    .light-mode .timeline-item::before {
+      border-color: var(--bg-light);
+    }
+
+    .timeline-item h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .timeline-item ul {
+      padding-left: 20px;
+    }
+
+    .timeline-item li {
+      margin-bottom: 8px;
+    }
+
+    /* Skills section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .skill-badge {
+      background-color: var(--primary);
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+      border-left: 3px solid var(--primary);
+      padding-left: 20px;
+      margin-bottom: 30px;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Project cards */
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode .project-card:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .project-tag {
+      display: inline-block;
+      background-color: rgba(242, 182, 50, 0.2);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
     /* Mobile responsiveness */
     @media (max-width: 768px) {
       .hero {
@@ -420,6 +536,14 @@
       .services .card {
         margin-bottom: 20px;
       }
+      
+      .timeline::before {
+        left: 0;
+      }
+      
+      .timeline-item::before {
+        left: -12px;
+      }
     }
 
     @media (max-width: 576px) {
@@ -433,6 +557,10 @@
 
       .section-title {
         font-size: 1.5rem;
+      }
+      
+      .hero img {
+        max-width: 90%;
       }
     }
   </style>
@@ -466,7 +594,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#linkedinPosts">Posts</a>
@@ -500,7 +634,7 @@
             <button class="btn btn-warning fw-semibold" onclick="location.href='mailto:aryansharma73095@gmail.com'">Contact Me</button>
             <a href="https://wa.me/7309544193?text=Hi%20there!%20I%20saw%20your%20portfolio." target="_blank"
                class="btn fw-semibold" style="background-color: #25D366; color: white;">
-              Text Me on WhatsApp
+              <i class="fab fa-whatsapp me-2"></i>WhatsApp
             </a>
           </div>
         </div>
@@ -548,6 +682,55 @@
     </div>
   </section>
 
+  <!-- Skills Section -->
+  <section class="section py-5" id="skills">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="row g-4">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="card p-4 h-100">
+                <div class="card-body">
+                  <h3 class="text-primary">Technical Skills</h3>
+                  <div class="skills-container justify-content-center">
+                    <span class="skill-badge">Product Management</span>
+                    <span class="skill-badge">Project Management</span>
+                    <span class="skill-badge">RESTful APIs</span>
+                    <span class="skill-badge">SQL</span>
+                    <span class="skill-badge">Postman</span>
+                    <span class="skill-badge">HTML/CSS</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Flutter</span>
+                    <span class="skill-badge">WordPress</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="card p-4 h-100">
+                <div class="card-body">
+                  <h3 class="text-primary">Tools & Platforms</h3>
+                  <div class="skills-container justify-content-center">
+                    <span class="skill-badge">Jira</span>
+                    <span class="skill-badge">Confluence</span>
+                    <span class="skill-badge">Figma</span>
+                    <span class="skill-badge">tray.io</span>
+                    <span class="skill-badge">Salesforce</span>
+                    <span class="skill-badge">Redash</span>
+                    <span class="skill-badge">Snowflake</span>
+                    <span class="skill-badge">PostgreSQL</span>
+                    <span class="skill-badge">MySQL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Latest LinkedIn Posts Section -->
   <section class="section py-5" id="linkedinPosts">
     <div class="container text-center">
@@ -560,9 +743,48 @@
                 <i class="fab fa-linkedin fa-4x mb-3" style="color: var(--primary);"></i>
                 <h4>Connect with me on LinkedIn</h4>
                 <p>View my latest posts and professional updates by visiting my LinkedIn profile.</p>
-                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7311245063722782720/" target="_blank" class="btn btn-warning fw-semibold">Visit My Post</a>
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7311245063722782720/" target="_blank" class="btn btn-warning fw-semibold">
+                  <i class="fab fa-linkedin me-2"></i>Visit My Post
+                </a>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section py-5" id="testimonials">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">What Colleagues Say</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="testimonial-card text-start">
+                  <p>"Aryan has an exceptional ability to understand complex product requirements and translate them into actionable development tasks. His technical knowledge combined with product thinking makes him a valuable asset to any team."</p>
+                  <div class="testimonial-author">Rahul Sharma</div>
+                  <div class="testimonial-role">Senior Product Manager, DotPe</div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial-card text-start">
+                  <p>"Working with Aryan on API integrations was a seamless experience. His attention to detail and problem-solving skills ensured our projects were delivered on time with high quality standards."</p>
+                  <div class="testimonial-author">Priya Patel</div>
+                  <div class="testimonial-role">Backend Developer, Lepton Software</div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
       </div>
@@ -598,7 +820,9 @@
         </div>
         <div class="modal-body text-center">
           <p>You can download my resume below:</p>
-          <a href="aryan_sharma_resume.pdf" class="btn btn-warning fw-semibold" download>Download Resume</a>
+          <a href="aryan_sharma_resume.pdf" class="btn btn-warning fw-semibold" download>
+            <i class="fas fa-download me-2"></i>Download Resume
+          </a>
           <div class="mt-4">
             <p>Or view it directly here:</p>
             <iframe src="aryan_sharma_resume.pdf" width="100%" height="500px" style="border: none;"></iframe>
@@ -665,7 +889,7 @@
                 <li>Developed website using WordPress and HTML/CSS (Front-end)</li>
                 <li>Worked on backend data management.</li>
                 <li>Website – skillvertex.in</li>
-                <li>Handled microservices , fr & cr</li>
+                <li>Handled microservices,FR & CR </li>
               </ul>
             </div>
           </div>
@@ -674,113 +898,165 @@
     </div>
   </div>
 
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script>
-    // Initialize AOS animation library
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
-
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-    // Toggle Dark/Light Mode - Updated to handle navbar text colors
-function toggleTheme() {
-  const body = document.body;
-  const hero = document.querySelector('.hero');
-  const navbar = document.querySelector('.navbar');
+  <!-- Contact Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Get In Touch</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-warning w-100 fw-semibold">Send Message</button>
+            </form>
+            <div class="mt-4 text-center">
+              <p>Or reach out directly:</p>
+              <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:aryansharma73095@gmail.com" class="btn btn-outline-light">
+                  <i class="fas fa-envelope me-2"></i>Email
+                </a>
+                <a href="https://wa.me/7309544193" target="_blank" class="btn btn-outline-light">
+                  <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   
-  body.classList.toggle("dark-mode");
-  body.classList.toggle("light-mode");
-  hero.classList.toggle("dark-mode");
-  hero.classList.toggle("light-mode");
-  navbar.classList.toggle("navbar-dark-mode");
-  navbar.classList.toggle("navbar-light-mode");
-  
-  // Update theme icon and text
-  const themeIcon = document.getElementById('themeIcon');
-  const themeText = document.getElementById('themeText');
-  
-  if (body.classList.contains('dark-mode')) {
-    themeIcon.textContent = '🌙';
-    themeText.textContent = 'Dark Mode';
-  } else {
-    themeIcon.textContent = '☀️';
-    themeText.textContent = 'Light Mode';
-  }
-  
-  // Store preference in localStorage
-  const isDarkMode = body.classList.contains('dark-mode');
-  localStorage.setItem('darkMode', isDarkMode);
-}
-
-    // Check for saved theme preference - Updated to handle navbar text colors
-if (localStorage.getItem('darkMode') === 'false') {
-  const body = document.body;
-  const hero = document.querySelector('.hero');
-  const navbar = document.querySelector('.navbar');
-  
-  body.classList.remove('dark-mode');
-  body.classList.add('light-mode');
-  hero.classList.remove('dark-mode');
-  hero.classList.add('light-mode');
-  navbar.classList.remove('navbar-dark-mode');
-  navbar.classList.add('navbar-light-mode');
-  
-  // Update theme icon and text
-  document.getElementById('themeIcon').textContent = '☀️';
-  document.getElementById('themeText').textContent = 'Light Mode';
-}
-
-    // Open Modal
-    function openModal(type) {
-      if (type === "resume") {
-        var myModal = new bootstrap.Modal(document.getElementById('resumeModal'));
-        myModal.show();
-      } else if (type === "workHistory") {
-        var myModal = new bootstrap.Modal(document.getElementById('workHistoryModal'));
-        myModal.show();
-      }
-    }
-
-    // Back to top button functionality
-    window.addEventListener('scroll', function() {
-      const backToTopButton = document.querySelector('.back-to-top');
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('active');
-      } else {
-        backToTopButton.classList.remove('active');
-      }
-    });
-
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS animation
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
       });
-    }
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+  
+      // Theme toggle functionality
+      function toggleTheme() {
+        const body = document.body;
+        const navbar = document.querySelector('.navbar');
+        const hero = document.querySelector('.hero');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
         
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if (body.classList.contains('dark-mode')) {
+          // Switch to light mode
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          navbar.classList.remove('navbar-dark-mode');
+          navbar.classList.add('navbar-light-mode');
+          hero.classList.remove('dark-mode');
+          hero.classList.add('light-mode');
+          themeIcon.textContent = '☀️';
+          themeText.textContent = 'Light Mode';
+          localStorage.setItem('theme', 'light');
+        } else {
+          // Switch to dark mode
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+          navbar.classList.remove('navbar-light-mode');
+          navbar.classList.add('navbar-dark-mode');
+          hero.classList.remove('light-mode');
+          hero.classList.add('dark-mode');
+          themeIcon.textContent = '🌙';
+          themeText.textContent = 'Dark Mode';
+          localStorage.setItem('theme', 'dark');
+        }
+      }
+  
+      // Check for saved theme preference
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const body = document.body;
+        const navbar = document.querySelector('.navbar');
+        const hero = document.querySelector('.hero');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
         
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 70,
-            behavior: 'smooth'
-          });
+        if (savedTheme === 'light') {
+          body.classList.add('light-mode');
+          navbar.classList.add('navbar-light-mode');
+          hero.classList.add('light-mode');
+          themeIcon.textContent = '☀️';
+          themeText.textContent = 'Light Mode';
+        } else {
+          body.classList.add('dark-mode');
+          navbar.classList.add('navbar-dark-mode');
+          hero.classList.add('dark-mode');
+          themeIcon.textContent = '🌙';
+          themeText.textContent = 'Dark Mode';
+        }
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+      });
+  
+      // Back to top button visibility
+      window.addEventListener('scroll', () => {
+        const backToTop = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('active');
+        } else {
+          backToTop.classList.remove('active');
         }
       });
-    });
-  </script>
-</body>
-</html>
+  
+      // Scroll to top function
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+  
+      // Modal functions
+      function openModal(modalType) {
+        if (modalType === 'resume') {
+          const resumeModal = new bootstrap.Modal(document.getElementById('resumeModal'));
+          resumeModal.show();
+        } else if (modalType === 'workHistory') {
+          const workModal = new bootstrap.Modal(document.getElementById('workHistoryModal'));
+          workModal.show();
+        } else if (modalType === 'contact') {
+          const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+          contactModal.show();
+        }
+      }
+  
+      // Contact form submission
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Here you would typically send the form data to a server
+        // For demonstration, we'll just show an alert
+        alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon at ${email}.`);
+        
+        // Reset form
+        this.reset();
+        
+        // Close modal
+        const contactModal = bootstrap.Modal.getInstance(document.getElementById('contactModal'));
+        contactModal.hide();
+      });
+    </script>
+  </body>
+  </html>
