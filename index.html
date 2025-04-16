@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <!-- =============================================== -->
+  <!-- 🔒 PROTECTED CODE - UNAUTHORIZED USE PROHIBITED  -->
+  <!-- Copyright (C) 2024 Aryan Sharma - All Rights Reserved -->
+  <!-- License: Proprietary (contact aryansharma73095@gmail.com) -->
+  <!-- =============================================== -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Aryan Sharma | Product & Project Manager with experience at McDonald's, Vodafone & Tata Play." />
@@ -22,6 +28,13 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
+    /* 🔒 Disable text selection/copy-paste */
+    body {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
     :root {
       --primary: #f2b632;
       --primary-dark: #e0a72b;
@@ -426,6 +439,22 @@
 </head>
 
 <body class="dark-mode">
+  <!-- 🔒 Anti-Copy Protection -->
+  <script>
+    // Block right-click + Ctrl/Cmd+U
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = (e) => {
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+    };
+    
+    // Dynamic copyright injection
+    document.addEventListener('DOMContentLoaded', () => {
+      const footer = document.querySelector('footer p');
+      if (footer) {
+        footer.innerHTML = `© ${new Date().getFullYear()} <span style="color:var(--primary)">Aryan Sharma</span>. <span style="font-size:0.9em">All Rights Reserved. Unauthorized use prohibited.</span>`;
+      }
+    });
+  </script>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top shadow-sm px-4">
