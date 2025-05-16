@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aryan Sharma | Product & Project Manager with experience at McDonald's, Vodafone & Tata Play. Explore my work and skills." />
+  <meta name="keywords" content="Product Manager, Project Manager, Digital Product, Web, Mobile, APIs, Portfolio, Aryan Sharma" />
+  <meta name="author" content="Aryan Sharma" />
+  <title>Aryan Sharma | Product & Project Manager</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* 🔒 Disable text selection/copy-paste */
+    /* body {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    } */ /* Temporarily commented out for easier development/testing */
+
+    :root {
+      --primary: #f2b632; /* Yellow Gold */
+      --primary-dark: #e0a72b;
+      --primary-light: #f5c961;
+      --secondary: #3498db; /* A nice blue for accents */
+      
+      --bg-dark: #10101a; /* Darker, slightly blueish black */
+      --bg-darker: #0a0a10;
+      --card-dark-bg: rgba(30, 30, 45, 0.7); /* Semi-transparent for glassmorphism */
+      --card-dark-border: rgba(255, 255, 255, 0.1);
+
+      --bg-light: #f4f7f9; /* Off-white */
+      --bg-lighter: #ffffff;
+      --card-light-bg: rgba(255, 255, 255, 0.8);
+      --card-light-border: rgba(0, 0, 0, 0.08);
+
+      --text-light: #e0e0e0;
+      --text-lighter: #ffffff;
+      --text-dark: #333333;
+      --text-darker: #222222;
+      
+      --nav-dark-bg: rgba(20, 20, 30, 0.8);
+      --nav-light-bg: rgba(255, 255, 255, 0.8);
+      --nav-blur: blur(10px);
+
+      --hero-dark-bg: transparent; /* Particles will be the background */
+      --hero-light-bg: transparent;
+
+      --transition-fast: all 0.2s ease-in-out;
+      --transition-medium: all 0.4s ease-in-out;
+      --border-radius-sm: 0.3rem;
+      --border-radius-md: 0.75rem;
+      --border-radius-lg: 1rem;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 25px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 35px rgba(0,0,0,0.15);
+      --shadow-primary: 0 0 20px rgba(242, 182, 50, 0.5);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', 'Inter', sans-serif;
+      transition: var(--transition-medium);
+      line-height: 1.7;
+      font-weight: 400;
+      overflow-x: hidden; /* Prevent horizontal scroll from AOS or other elements */
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    /* Navbar */
+    .navbar {
+      transition: var(--transition-medium);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .navbar.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+    .dark-mode .navbar.scrolled {
+      background-color: var(--nav-dark-bg);
+      backdrop-filter: var(--nav-blur);
+      -webkit-backdrop-filter: var(--nav-blur);
+    }
+    .light-mode .navbar.scrolled {
+      background-color: var(--nav-light-bg);
+      backdrop-filter: var(--nav-blur);
+      -webkit-backdrop-filter: var(--nav-blur);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary) !important;
+    }
+    .nav-link {
+      font-weight: 500;
+      transition: var(--transition-fast);
+      margin: 0 0.5rem;
+    }
+    .dark-mode .nav-link { color: var(--text-light) !important; }
+    .dark-mode .nav-link:hover, .dark-mode .nav-link.active { color: var(--primary) !important; }
+    .light-mode .nav-link { color: var(--text-dark) !important; }
+    .light-mode .nav-link:hover, .light-mode .nav-link.active { color: var(--primary) !important; }
+    
+    .dark-mode .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28242, 182, 50, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .light-mode .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2840, 40, 40, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 20px 80px; /* Increased top padding for navbar */
+      position: relative;
+      overflow: hidden; /* For particle canvas */
+    }
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Behind hero content */
+    }
+    .hero.dark-mode { background-color: var(--hero-dark-bg); color: var(--text-lighter); }
+    .hero.light-mode { background-color: var(--hero-light-bg); color: var(--text-darker); }
+    .light-mode .hero h1, .light-mode .hero p { color: var(--text-darker)}
+    .dark-mode .hero h1, .dark-mode .hero p { color: var(--text-lighter)}
+
+
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 25px;
+      line-height: 1.3;
+    }
+    .hero h1 .typed-text { color: var(--primary); }
+    .hero p.lead {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin-bottom: 35px;
+      opacity: 0.9;
+      max-width: 600px;
+    }
+    .hero-image-container {
+      position: relative;
+    }
+    .hero img {
+      max-width: 70%;
+      height: auto;
+      object-fit: cover;
+      border-radius: var(--border-radius-lg);
+      border: 4px solid var(--primary);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      transition: var(--transition-medium);
+    }
+    .dark-mode .hero img { box-shadow: 0 0 30px rgba(242,182,50,0.3), 0 10px 30px rgba(0,0,0,0.5); }
+    .light-mode .hero img { box-shadow: 0 0 20px rgba(242,182,50,0.4), 0 10px 30px rgba(0,0,0,0.2); }
+
+    .hero img:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: 0 0 40px var(--primary-dark), var(--shadow-lg);
+    }
+
+    /* Sections */
+    .section {
+      padding: 100px 0;
+    }
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 60px;
+      position: relative;
+      display: inline-block;
+      color: var(--primary);
+    }
+    .dark-mode .section-title { color: var(--primary); }
+    .light-mode .section-title { color: var(--primary-dark); }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* Cards (General Styling) */
+    .card {
+      border: 1px solid transparent;
+      transition: var(--transition-medium);
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      backdrop-filter: var(--nav-blur);
+      -webkit-backdrop-filter: var(--nav-blur);
+    }
+    .dark-mode .card {
+      background: var(--card-dark-bg);
+      color: var(--text-light);
+      border-color: var(--card-dark-border);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.37);
+    }
+    .light-mode .card {
+      background: var(--card-light-bg);
+      color: var(--text-dark);
+      border-color: var(--card-light-border);
+      box-shadow: var(--shadow-md);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    .dark-mode .card:hover { box-shadow: 0 0 35px rgba(242,182,50,0.2), 0 10px 30px rgba(0,0,0,0.5); }
+    .light-mode .card:hover { box-shadow: 0 0 25px rgba(242,182,50,0.3), var(--shadow-lg); }
+
+    .card h3, .card h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .dark-mode .card h3, .dark-mode .card h4 { color: var(--primary); }
+    .light-mode .card h3, .light-mode .card h4 { color: var(--primary-dark); }
+    
+    /* Services Section */
+    .services .card .icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+    .skill-badge {
+      background-color: var(--primary);
+      color: var(--bg-darker);
+      padding: 8px 18px;
+      border-radius: var(--border-radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
+    .skill-badge:hover {
+      transform: scale(1.05);
+      background-color: var(--primary-dark);
+    }
+    .light-mode .skill-badge {
+        background-color: var(--primary-light);
+        color: var(--text-darker);
+    }
+    .light-mode .skill-badge:hover {
+        background-color: var(--primary);
+    }
+
+
+    /* Projects Section */
+    #projects {
+        background-color: var(--bg-darker);
+    }
+    body.light-mode #projects {
+        background-color: var(--bg-lighter);
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card img {
+      width: 100%;
+      height: 200px; /* Or aspect-ratio: 16/9; */
+      object-fit: cover;
+      border-top-left-radius: var(--border-radius-md);
+      border-top-right-radius: var(--border-radius-md);
+      margin-bottom: 15px;
+    }
+    .project-card .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-tags {
+      margin-bottom: 15px;
+    }
+    .project-tag {
+      display: inline-block;
+      background-color: rgba(242, 182, 50, 0.15);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: var(--border-radius-sm);
+      font-size: 0.75rem;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .light-mode .project-tag {
+        color: var(--primary-dark);
+        background-color: rgba(242, 182, 50, 0.2);
+    }
+    .project-links a {
+      margin-right: 10px;
+    }
+
+    /* LinkedIn Section */
+    .linkedin-post-placeholder .fab.fa-linkedin {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+    }
+    .linkedin-post-placeholder h4 {
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    /* Testimonials Section */
+    #testimonials {
+        background-color: var(--bg-darker);
+    }
+    body.light-mode #testimonials {
+        background-color: var(--bg-lighter);
+    }
+    .testimonial-card {
+      border-left: 4px solid var(--primary);
+      padding: 25px;
+      margin-bottom: 30px;
+      background: transparent; /* Card styling is general now */
+      border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      margin-top: 20px;
+      color: var(--primary);
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: var(--primary);
+      border-radius: 50%;
+      padding: 15px; /* Adjust size */
+      width: 20px; /* Ensure square shape */
+      height: 20px;
+      background-size: 60% 60%;
+    }
+    .carousel-indicators [data-bs-target] {
+        background-color: var(--primary);
+        opacity: 0.5;
+    }
+    .carousel-indicators .active {
+        opacity: 1;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      transition: var(--transition-medium);
+    }
+    .dark-mode footer {
+      background-color: var(--bg-darker);
+      color: var(--text-light);
+    }
+    .light-mode footer {
+      background-color: var(--bg-lighter);
+      color: var(--text-dark);
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+    }
+    .social-icons a {
+      margin: 0 15px;
+      font-size: 1.8rem;
+      transition: var(--transition-fast);
+      display: inline-block;
+    }
+    .dark-mode .social-icons a { color: var(--text-light); }
+    .light-mode .social-icons a { color: var(--text-dark); }
+    .social-icons a:hover {
+      color: var(--primary);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* Theme Toggle Button */
+    .toggle-switch {
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-size: 1rem;
+      padding: 8px 15px;
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+    }
+    .toggle-switch:hover {
+      background-color: var(--primary);
+      color: var(--bg-darker) !important; /* Important to override nav-link color */
+      box-shadow: var(--shadow-primary);
+    }
+    .toggle-switch .theme-icon { margin-right: 8px; }
+    
+    /* Buttons */
+    .btn-warning {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--bg-darker) !important; /* High contrast for text on primary */
+      font-weight: 600;
+      padding: 10px 25px;
+      transition: var(--transition-fast);
+      border-radius: var(--border-radius-sm);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-warning:hover, .btn-warning:focus {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-primary);
+    }
+    .btn-outline-warning {
+      color: var(--primary);
+      border-color: var(--primary);
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition-fast);
+    }
+    .btn-outline-warning:hover {
+      background-color: var(--primary);
+      color: var(--bg-darker) !important;
+      box-shadow: var(--shadow-primary);
+    }
+
+    /* Modals */
+    .modal-content {
+      border-radius: var(--border-radius-lg);
+      border: none;
+    }
+    .dark-mode .modal-content { background-color: var(--card-dark-bg); backdrop-filter: blur(5px); border: 1px solid var(--card-dark-border); }
+    .light-mode .modal-content { background-color: var(--card-light-bg); }
+    .dark-mode .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .light-mode .modal-header { border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .dark-mode .modal-title { color: var(--text-lighter); }
+    .light-mode .modal-title { color: var(--text-darker); }
+    .dark-mode .modal-body { color: var(--text-light); }
+    .light-mode .modal-body { color: var(--text-dark); }
+    .dark-mode .modal-body h4 { color: var(--primary); }
+    .light-mode .modal-body h4 { color: var(--primary-dark); }
+    .dark-mode .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-darker); }
+    .light-mode ::-webkit-scrollbar-track { background: var(--bg-lighter); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--bg-darker) !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-medium);
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+    }
+    .back-to-top.active { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background-color: var(--primary-dark); transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-primary); }
+
+    /* Timeline styling */
+    .timeline {
+      position: relative;
+      padding-left: 40px; /* Increased padding */
+      margin-top: 20px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; /* Adjusted for larger dot */
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 30px; /* Increased padding */
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px; /* Positioned relative to the line */
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      border: 4px solid var(--bg-dark); /* Creates a ring effect */
+      z-index: 1;
+    }
+    .light-mode .timeline-item::before { border-color: var(--bg-light); }
+    .timeline-item h4 { color: var(--primary); margin-bottom: 10px; font-weight: 600; }
+    .timeline-item ul { padding-left: 20px; list-style-type: disc; }
+    .timeline-item li { margin-bottom: 10px; font-size: 0.95rem; }
+
+    /* Form inputs */
+    .form-control {
+        background-color: transparent;
+        border: 1px solid;
+        transition: var(--transition-fast);
+        padding: 0.75rem 1rem;
+    }
+    .dark-mode .form-control {
+        color: var(--text-light);
+        border-color: rgba(255,255,255,0.2);
+    }
+    .light-mode .form-control {
+        color: var(--text-dark);
+        border-color: rgba(0,0,0,0.2);
+    }
+    .form-control:focus {
+        background-color: transparent;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.2rem rgba(242,182,50,0.25);
+    }
+    .dark-mode .form-control:focus { color: var(--text-light); }
+    .light-mode .form-control:focus { color: var(--text-dark); }
+    .form-label { font-weight: 500; margin-bottom: 0.5rem; }
+
+
+    /* Mobile responsiveness */
+    @media (max-width: 991.98px) {
+        .hero { text-align: center; }
+        .hero .d-flex { justify-content: center !important; }
+        .hero-image-container { margin-top: 40px; }
+        .hero img { max-width: 60%; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 120px 20px 60px; }
+      .hero h1 { font-size: 2rem; }
+      .hero p.lead { font-size: 1rem; }
+      .hero img { max-width: 70%; }
+      .section { padding: 80px 0; }
+      .section-title { font-size: 1.8rem; }
+      .timeline::before { left: 5px; }
+      .timeline-item::before { left: -8px; width:18px; height:18px;}
+    }
+    @media (max-width: 576px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero img { max-width: 80%; }
+      .section-title { font-size: 1.6rem; }
+      .social-icons a { font-size: 1.5rem; margin: 0 10px;}
+      .btn-warning, .btn-outline-warning { padding: 8px 20px; font-size: 0.9rem;}
+      .back-to-top { width: 40px; height: 40px; font-size: 16px;}
+    }
+  </style>
+</head>
+
+<body class="dark-mode" data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
+  <script>
+    // Block right-click + Ctrl/Cmd+U, S, C, P
+    /* document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = (e) => {
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'p' || e.key === 'P')) e.preventDefault();
+      if (e.metaKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'p' || e.key === 'P')) e.preventDefault();
+      if (e.key === 'F12') e.preventDefault();
+    }; */ // Temporarily commented out for easier development
+
+    // Dynamic copyright injection
+    document.addEventListener('DOMContentLoaded', () => {
+      const footerYear = document.getElementById('currentYear');
+      if (footerYear) {
+        footerYear.textContent = new Date().getFullYear();
+      }
+      const footerText = document.querySelector('footer .copyright-text');
+        if (footerText) {
+            footerText.innerHTML = `© ${new Date().getFullYear()} <a href="#" style="color:var(--primary); text-decoration:none;">Aryan Sharma</a>. All Rights Reserved.`;
+        }
+    });
+  </script>
+
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm px-lg-4 px-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#home">Aryan Sharma</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#linkedinPosts">Posts</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
+          </li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <button class="btn toggle-switch" onclick="toggleTheme()" aria-label="Toggle theme">
+              <span class="theme-icon" id="themeIcon"></span> <span id="themeText"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div id="particles-js"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7" data-aos="fade-right">
+          <p class="text-uppercase mb-2 fw-semibold" style="color: var(--primary); letter-spacing: 1px;">Aryan Sharma</p>
+          <h1><span class="typed-text"></span><br/>for Disruptors.</h1>
+          <p class="lead">
+            I specialize in turning innovative ideas into impactful digital products, 
+            with a passion for identifying and addressing unmet customer needs. With 4 years of experience in Product & Project Management,
+            I've worked with enterprise clients across F&B, Telecom, EdTech, and FinTech.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <button class="btn btn-warning" onclick="openModal('workHistory')"><i class="fas fa-briefcase me-2"></i>Work History</button>
+            <button class="btn btn-outline-warning" onclick="openModal('resume')"><i class="fas fa-file-alt me-2"></i>View Resume</button>
+            <a href="mailto:aryansharma73095@gmail.com" class="btn btn-warning"><i class="fas fa-envelope me-2"></i>Contact Me</a>
+            <a href="https://wa.me/7309544193?text=Hi%20Aryan!%20I%20saw%20your%20portfolio." target="_blank"
+               class="btn fw-semibold" style="background-color: #25D366; color: white;">
+              <i class="fab fa-whatsapp me-2"></i>WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center mt-5 mt-lg-0 hero-image-container" data-aos="fade-left" data-aos-delay="200">
+          <img src="aryanimg.jpeg" alt="Aryan Sharma" class="img-fluid" /> </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">What I Do</h2>
+      <div class="row g-4 services justify-content-center">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-4 h-100 text-center">
+            <div class="card-body">
+              <span class="icon"><i class="fas fa-cogs"></i></span>
+              <h3>Product Management</h3>
+              <p>Roadmap planning to go-live execution, delivering real-time solutions for seamless product development aligned with business objectives. Expertise in frameworks like RICE & 3E model.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-4 h-100 text-center">
+            <div class="card-body">
+              <span class="icon"><i class="fas fa-laptop-code"></i></span>
+              <h3>Web Development</h3>
+              <p>Specializing in high-performance web apps with modern frameworks and robust API integrations. Strong understanding of RESTful APIs for seamless backend communication.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card p-4 h-100 text-center">
+            <div class="card-body">
+              <span class="icon"><i class="fas fa-mobile-alt"></i></span>
+              <h3>App Development</h3>
+              <p>Extensive experience in Flutter and Native app development. Building scalable, high-performing applications for startups and enterprises, managing the full product lifecycle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+        <p class="lead">Proficient with tools like <strong>Jira</strong>, <strong>Confluence</strong>, <strong>Figma</strong>, and <strong>tray.io</strong> for efficient project management, collaboration, and integration workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="row g-4">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="card p-4 h-100">
+                <div class="card-body">
+                  <h3 class="text-center">Technical Skills</h3>
+                  <div class="skills-container justify-content-center">
+                    <span class="skill-badge">Product Management</span>
+                    <span class="skill-badge">Project Management</span>
+                    <span class="skill-badge">Agile Methodologies</span>
+                    <span class="skill-badge">RESTful APIs</span>
+                    <span class="skill-badge">SQL</span>
+                    <span class="skill-badge">Postman</span>
+                    <span class="skill-badge">HTML/CSS</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Flutter</span>
+                    <span class="skill-badge">WordPress</span>
+                    <span class="skill-badge">System Design</span>
+                    <span class="skill-badge">Data Analysis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="card p-4 h-100">
+                <div class="card-body">
+                  <h3 class="text-center">Tools & Platforms</h3>
+                  <div class="skills-container justify-content-center">
+                    <span class="skill-badge">Jira</span>
+                    <span class="skill-badge">Confluence</span>
+                    <span class="skill-badge">Figma</span>
+                    <span class="skill-badge">tray.io</span>
+                    <span class="skill-badge">Salesforce</span>
+                    <span class="skill-badge">Redash</span>
+                    <span class="skill-badge">Snowflake</span>
+                    <span class="skill-badge">PostgreSQL</span>
+                    <span class="skill-badge">MySQL</span>
+                    <span class="skill-badge">Oracle SQL Dev</span>
+                    <span class="skill-badge">Google Analytics</span>
+                    <span class="skill-badge">Mixpanel</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">My Projects</h2>
+      <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Here are a few examples of projects I've managed or developed.</p>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card project-card">
+            <img src="https://via.placeholder.com/400x250/F2B632/0A0A10?text=Project+Alpha" alt="Project Alpha Thumbnail"> <div class="card-body text-start p-4">
+              <h4>OneForce UI (WFM System)</h4>
+              <p class="small">Managed API requirements and development for Vi & Dialog WFM flow, enhancing operational efficiency.</p>
+              <div class="project-tags">
+                <span class="project-tag">API Development</span>
+                <span class="project-tag">WFM</span>
+                <span class="project-tag">Telecom</span>
+                <span class="project-tag">Oracle SQL</span>
+              </div>
+              <div class="project-links mt-auto">
+                <a href="#" class="btn btn-sm btn-warning disabled" target="_blank" aria-disabled="true">Live Demo (NDA)</a>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card project-card">
+            <img src="https://via.placeholder.com/400x250/3498DB/FFFFFF?text=Project+Beta" alt="Project Beta Thumbnail"> <div class="card-body text-start p-4">
+              <h4>Enterprise API Integrations (DotPe)</h4>
+              <p class="small">Led API integrations for major F&B clients (McD, Blue Tokai) with platforms like Swiggy & Zomato using PIPE.</p>
+              <div class="project-tags">
+                <span class="project-tag">API Integration</span>
+                <span class="project-tag">F&B</span>
+                <span class="project-tag">PIPE</span>
+                <span class="project-tag">Redash</span>
+              </div>
+              <div class="project-links mt-auto">
+                <a href="#" class="btn btn-sm btn-warning disabled" target="_blank" aria-disabled="true">Case Study (NDA)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="card project-card">
+             <img src="https://via.placeholder.com/400x250/2ECC71/FFFFFF?text=Project+Gamma" alt="Project Gamma Thumbnail"> <div class="card-body text-start p-4">
+              <h4>Skillvertex Website Dev</h4>
+              <p class="small">Developed the front-end for an EdTech platform using WordPress, HTML/CSS, focusing on user experience.</p>
+              <div class="project-tags">
+                <span class="project-tag">WordPress</span>
+                <span class="project-tag">HTML/CSS</span>
+                <span class="project-tag">Frontend</span>
+                <span class="project-tag">EdTech</span>
+              </div>
+              <div class="project-links mt-auto">
+                <a href="https://www.skillvertex.com/" class="btn btn-sm btn-warning" target="_blank">View Site</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section py-5" id="linkedinPosts">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">Connect & Insights</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8" data-aos="fade-up">
+          <div class="card p-4">
+            <div class="card-body linkedin-post-placeholder">
+              <i class="fab fa-linkedin"></i>
+              <h4>Stay Updated with My Professional Journey</h4>
+              <p>Follow me on LinkedIn for my latest articles, product insights, and career updates. Let's connect and share knowledge!</p>
+              <div class="d-flex flex-wrap gap-2 justify-content-center">
+                <a href="https://www.linkedin.com/in/imaryansharma/" target="_blank" class="btn btn-warning">
+                  <i class="fab fa-linkedin me-2"></i>Visit My LinkedIn Profile
+                </a>
+                 <a href="https://www.linkedin.com/feed/update/urn:li:activity:7328280775320129536/" target="_blank" class="btn btn-outline-warning">
+                  <i class="fas fa-newspaper me-2"></i>View Specific Post
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">What Colleagues Say</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-delay="100">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="card testimonial-card text-start p-md-5 p-4">
+                  <p class="fst-italic">"Aryan has an exceptional ability to understand complex product requirements and translate them into actionable development tasks. His technical knowledge combined with product thinking makes him a valuable asset to any team."</p>
+                  <div class="mt-auto">
+                    <div class="testimonial-author">Akash Thakur</div>
+                    <div class="testimonial-role">Assistant Manager, DotPe</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="card testimonial-card text-start p-md-5 p-4">
+                  <p class="fst-italic">"Working with Aryan on API integrations was a seamless experience. His attention to detail and problem-solving skills ensured our projects were delivered on time with high quality standards."</p>
+                  <div class="mt-auto">
+                    <div class="testimonial-author">Praveen Sharma</div>
+                    <div class="testimonial-role">Senior Backend Developer, Lepton Software</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-icons mb-4">
+        <a href="https://www.linkedin.com/in/imaryansharma/" target="_blank" class="fab fa-linkedin" aria-label="LinkedIn"></a>
+        <a href="https://github.com/imaryansharma" target="_blank" class="fab fa-github" aria-label="GitHub"></a>
+        <a href="mailto:aryansharma73095@gmail.com" class="fas fa-envelope" aria-label="Email"></a>
+        <a href="https://wa.me/7309544193?text=Hi%20Aryan!" target="_blank" class="fab fa-whatsapp" aria-label="WhatsApp"></a>
+      </div>
+      <p class="copyright-text small">© <span id="currentYear"></span> Aryan Sharma. All Rights Reserved.</p>
+      <p class="small mt-2 opacity-75">Designed & Developed with <i class="fas fa-heart" style="color: var(--primary);"></i> by Aryan Sharma</p>
+    </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl"> <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resumeModalLabel">My Resume</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>You can download my resume or view it below:</p>
+          <a href="aryan_sharma_resume.pdf" class="btn btn-warning mb-3" download>
+            <i class="fas fa-download me-2"></i>Download Resume (PDF)
+          </a>
+          <div class="iframe-container mt-3" style="position: relative; width: 100%; padding-bottom: 141.42%; /* A4 aspect ratio */">
+            <iframe src="aryan_sharma_resume.pdf" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" title="Aryan Sharma Resume"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="workHistoryModal" tabindex="-1" aria-labelledby="workHistoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="workHistoryModalLabel">Work History</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Assistant Product Manager, Lepton Software (08/2024 – Present, Telecom)</h4>
+              <ul>
+                <li>Handling Vi (Vodafone) & Dialog WFM flow, API requirement and development.</li>
+                <li>Extensive experience in analysis, design, and implementation of project requirements.</li>
+                <li>Working with tools such as WFM and Smart Inventory.</li>
+                <li>Handling test flow for tickets raised via HPSM, OWS, NMS, etc.</li>
+                <li>Utilizing Oracle SQL Developer & pgAdmin to analyze API errors and ticket issues.</li>
+                <li>Conducting API testing in Postman for functional validation.</li>
+                <li>Leading a team of 4 developers (backend & frontend).</li>
+                <li>Working on MySQL, Postgres, APIs, and Inhouse tools.</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h4>Assistant Integration Manager, DotPe (10/2021 – 01/2024, F&B, FinTech)</h4>
+              <ul>
+                <li>Partnered with Support Manager and IT Product teams to prioritize and address support tickets 24/7.</li>
+                <li>Provided product support and maintenance for specific ERP solutions.</li>
+                <li>Initiated API Integrations for businesses using PIPE (Postman, Swiggy, Zomato).</li>
+                <li>Worked on Data and Strategy using Redash & Snowflake.</li>
+                <li>Fixed TAT, SLA for FTP and ADSR integration ticket issues.</li>
+                <li>Handled sales dip and ftp data for enterprise clients (Blue Tokai, McD, Biryani Blues, etc.).</li>
+                <li>Led website/app integration with 3PO systems & payment gateways.</li>
+                <li>Managed inventory, supply chain complexities, and product requirements (ERP, CRM, POS).</li>
+                <li>Supervised a team of 6 Solution Managers.</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h4>Product Analyst, Planet Spark (04/2021 - 08/2021, EdTech)</h4>
+              <ul>
+                <li>Analyzed product performance and business insights for data-driven decisions.</li>
+                <li>Handled CRM (Salesforce) for lead management and user data tracking.</li>
+                <li>Managed B2B sales projects for product delivery and customer satisfaction.</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h4>Web Developer, Skillvertex (01/2021 - 03/2021, EdTech)</h4>
+              <ul>
+                <li>Developed website using WordPress and HTML/CSS (Front-end).</li>
+                <li>Worked on backend data management. Website: skillvertex.in.</li>
+                <li>Handled microservices, FR & CR.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Get In Touch</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="contactForm" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Send Message</button>
+          </form>
+          <div class="mt-4 text-center">
+            <p>Or reach out directly:</p>
+            <div class="d-flex justify-content-center gap-3">
+              <a href="mailto:aryansharma73095@gmail.com" class="btn btn-outline-warning">
+                <i class="fas fa-envelope me-2"></i>Email
+              </a>
+              <a href="https://wa.me/7309544193?text=Hi%20Aryan!" target="_blank" class="btn" style="background-color: #25D366; color: white;">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.5/dist/tsparticles.min.js"></script>
+
+  <script>
+    // Initialize AOS animation
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out-quad',
+      once: true,
+      offset: 50 // trigger animations a bit sooner
+    });
+
+    // Theme toggle functionality
+    const body = document.body;
+    const navbar = document.querySelector('.navbar');
+    const heroSection = document.querySelector('.hero');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function applyTheme(theme) {
+      body.classList.remove('dark-mode', 'light-mode');
+      body.classList.add(theme + '-mode');
+      
+      if (navbar) {
+        navbar.classList.remove('navbar-dark-mode', 'navbar-light-mode');
+        navbar.classList.add('navbar-' + theme + '-mode');
+      }
+      if (heroSection) {
+        heroSection.classList.remove('dark-mode', 'light-mode');
+        heroSection.classList.add(theme + '-mode');
+      }
+
+      if (theme === 'dark') {
+        themeIcon.innerHTML = '☀️';
+        themeText.textContent = 'Light Mode';
+      } else {
+        themeIcon.innerHTML = '🌙';
+        themeText.textContent = 'Dark Mode';
+      }
+      localStorage.setItem('theme', theme);
+      // Re-initialize particles if they exist, with potentially different colors
+      if (window.currentParticlesConfig) {
+        loadParticles(window.currentParticlesConfig); 
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    }
+
+    // Load saved theme or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+    }
+    prefersDarkScheme.addEventListener("change", (event) => {
+        if (!localStorage.getItem('theme')) { // Only if no user preference is set
+            applyTheme(event.matches ? 'dark' : 'light');
+        }
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Modal functionality
+    function openModal(modalId) {
+      var myModal = new bootstrap.Modal(document.getElementById(modalId + 'Modal'));
+      myModal.show();
+    }
+
+    // Typed.js for Hero Section
+    if (document.querySelector('.typed-text')) {
+      new Typed('.typed-text', {
+        strings: ["Digital Product Development", "Innovative Web Solutions", "Mobile App Strategies", "API Integration Expertise"],
+        typeSpeed: 50,
+        backSpeed: 25,
+        backDelay: 2000,
+        loop: true,
+        smartBackspace: true,
+        cursorChar: '_',
+      });
+    }
+
+    // tsParticles configuration
+    function loadParticles(options) {
+        const theme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+        const particleColor = theme === 'dark' ? "#f2b632" : "#333333"; // Primary for dark, dark grey for light
+        const lineColor = theme === 'dark' ? "#f2b632" : "#555555";
+
+        tsParticles.load("particles-js", {
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: {
+                        enable: true,
+                        mode: "grab", // "grab" or "bubble" or "repulse"
+                    },
+                    onClick: {
+                        enable: true,
+                        mode: "push", // "push" or "remove"
+                    },
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.7,
+                        },
+                    },
+                    bubble: {
+                        distance: 200,
+                        size: 20,
+                        duration: 2,
+                        opacity: 0.8,
+                    },
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4,
+                    },
+                    push: {
+                        particles_nb: 4,
+                    },
+                    remove: {
+                        particles_nb: 2,
+                    },
+                },
+            },
+            particles: {
+                number: {
+                    value: 60, // Reduced for subtlety
+                    density: {
+                        enable: true,
+                        value_area: 800,
+                    },
+                },
+                color: {
+                    value: particleColor,
+                },
+                shape: {
+                    type: "circle", // "circle", "edge", "triangle", "polygon", "star"
+                },
+                opacity: {
+                    value: 0.4, // Softer opacity
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 0.5,
+                        opacity_min: 0.1,
+                        sync: false,
+                    },
+                },
+                size: {
+                    value: 2, // Smaller particles
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 2,
+                        size_min: 0.3,
+                        sync: false,
+                    },
+                },
+                links: {
+                    color: lineColor,
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.2, // Softer links
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 1, // Slower movement
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out", // "out", "bounce"
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200,
+                    },
+                },
+            },
+            detectRetina: true,
+        });
+    }
+    // Store the config globally to be re-used by theme switcher
+    window.currentParticlesConfig = {}; 
+    loadParticles(window.currentParticlesConfig);
+
+
+    // Contact Form Submission (AJAX for Netlify)
+const contactForm = document.getElementById('contactForm');
+const formStatusMessage = document.getElementById('formStatusMessage'); // Get the div for messages
+
+if (contactForm && formStatusMessage) {
+  contactForm.addEventListener('submit', async event => {
+    event.preventDefault(); // Prevent the default browser submission
+
+    // --- 1. Clear previous messages and Get Form Data ---
+    formStatusMessage.textContent = '';
+    formStatusMessage.className = 'mt-3 small'; // Reset classes, keep margin
+
+    const formData = new FormData(contactForm);
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+
+    // --- 2. Basic Client-Side Validation ---
+    const name = formData.get('name').trim();
+    const email = formData.get('email').trim();
+    const message = formData.get('message').trim();
+    let errors = [];
+
+    if (name === '') errors.push('Name is required.');
+    if (email === '') {
+      errors.push('Email is required.');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // Simple email format check
+      errors.push('Please enter a valid email address.');
+    }
+    if (message === '') errors.push('Message is required.');
+
+    if (errors.length > 0) {
+      formStatusMessage.textContent = 'Error: ' + errors.join(' ');
+      formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
+      return; // Stop if validation fails
+    }
+
+    // --- 3. Prepare for Submission (UI feedback) ---
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+    formStatusMessage.textContent = 'Sending your message...';
+    formStatusMessage.classList.add('alert', 'alert-info', 'p-2');
+
+    try {
+      // --- 4. AJAX Submission using Fetch ---
+      const response = await fetch(contactForm.action, { // Uses form's 'action' attribute
+        method: 'POST',
+        headers: {
+          // Netlify expects URL encoded data for simple forms submitted via AJAX
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        // Convert FormData to URL-encoded string
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        // --- 5. Handle Successful Submission ---
+        formStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
+        formStatusMessage.classList.remove('alert-info');
+        formStatusMessage.classList.add('alert', 'alert-success', 'p-2');
+        contactForm.reset(); // Clear the form fields
+        console.log('Form submitted successfully via AJAX to Netlify.');
+      } else {
+        // --- 6. Handle Submission Error from Server ---
+        // You might get an error page HTML back from Netlify, or a specific status
+        const errorText = await response.text(); // Get more details if available
+        throw new Error(`Server error: ${response.status} ${response.statusText}. ${errorText}`);
+      }
+    } catch (error) {
+      // --- 7. Handle Network or Other Errors ---
+      formStatusMessage.textContent = 'Sorry, there was an error sending your message. Please try again or contact me directly via email.';
+      formStatusMessage.classList.remove('alert-info');
+      formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
+      console.error('Form submission error:', error);
+    } finally {
+      // --- 8. Reset Button State ---
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonText;
+    }
+  });
+}
+  </script>
+</body>
+</html>
