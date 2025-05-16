@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #f2b632; /* Yellow Gold */
+  --primary-dark: #e0a72b;
+  --primary-light: #f5c961;
+  --secondary: #3498db; /* A nice blue for accents */
+  
+  --bg-dark: #10101a; /* Darker, slightly blueish black */
+  --bg-darker: #0a0a10;
+  --card-dark-bg: rgba(30, 30, 45, 0.7); /* Semi-transparent for glassmorphism */
+  --card-dark-border: rgba(255, 255, 255, 0.1);
+
+  --bg-light: #f4f7f9; /* Off-white */
+  --bg-lighter: #ffffff;
+  --card-light-bg: rgba(255, 255, 255, 0.8);
+  --card-light-border: rgba(0, 0, 0, 0.08);
+
+  --text-light: #e0e0e0;
+  --text-lighter: #ffffff;
+  --text-dark: #333333;
+  --text-darker: #222222;
+  
+  --nav-dark-bg: rgba(20, 20, 30, 0.8);
+  --nav-light-bg: rgba(255, 255, 255, 0.8);
+  --nav-blur: blur(10px);
+
+  --hero-dark-bg: transparent; /* Particles will be the background */
+  --hero-light-bg: transparent;
+
+  --transition-fast: all 0.2s ease-in-out;
+  --transition-medium: all 0.4s ease-in-out;
+  --border-radius-sm: 0.3rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
+  --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
+  --shadow-md: 0 8px 25px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 35px rgba(0,0,0,0.15);
+  --shadow-primary: 0 0 20px rgba(242, 182, 50, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', 'Inter', 'ui-sans-serif', system-ui, -apple-system, sans-serif;
+  transition: var(--transition-medium);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden; /* Prevent horizontal scroll from AOS or other elements */
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+body.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-darker); }
+body.light-mode ::-webkit-scrollbar-track { background: var(--bg-lighter); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
