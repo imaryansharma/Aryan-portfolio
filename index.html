@@ -46,9 +46,9 @@
       --text-dark: #333333;
       --text-darker: #222222;
       
-      --nav-dark-bg: rgba(20, 20, 30, 0.8);
-      --nav-light-bg: rgba(255, 255, 255, 0.8);
-      --nav-blur: blur(10px);
+      --nav-dark-bg: rgba(20, 20, 30, 0.95); /* More opacity for better visibility */
+      --nav-light-bg: rgba(255, 255, 255, 0.9);
+      --nav-blur: blur(15px);
 
       --hero-dark-bg: transparent; /* Particles will be the background */
       --hero-light-bg: transparent;
@@ -114,6 +114,21 @@
       font-weight: 500;
       transition: var(--transition-fast);
       margin: 0 0.5rem;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--primary);
+      transition: var(--transition-fast);
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 70%;
     }
     .dark-mode .nav-link { color: var(--text-light) !important; }
     .dark-mode .nav-link:hover, .dark-mode .nav-link.active { color: var(--primary) !important; }
@@ -254,6 +269,12 @@
       color: var(--primary);
       margin-bottom: 20px;
       display: inline-block;
+      transition: var(--transition-medium);
+    }
+    
+    .services .card:hover .icon {
+      transform: translateY(-5px) scale(1.1);
+      text-shadow: 0 0 15px rgba(242,182,50,0.6);
     }
 
     /* Skills Section */
@@ -298,12 +319,62 @@
     }
     .project-card img {
       width: 100%;
-      height: 200px; /* Or aspect-ratio: 16/9; */
-      object-fit: cover;
+      height: 160px;
+      object-fit: contain;
+      padding: 20px;
+      background-color: #0a0a10;
       border-top-left-radius: var(--border-radius-md);
       border-top-right-radius: var(--border-radius-md);
-      margin-bottom: 15px;
+      margin-bottom: 0;
+      transition: transform 0.3s ease;
     }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .timeline-item {
+      display: flex;
+      gap: 15px;
+    }
+
+    .company-logo {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      padding: 5px;
+      background: rgba(10, 10, 16, 0.8);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5px;
+      border: 1px solid var(--card-dark-border);
+      overflow: hidden;
+      transition: var(--transition-fast);
+    }
+    
+    .light-mode .company-logo {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--card-light-border);
+    }
+
+    .company-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(242,182,50,0.3);
+    }
+
+    .company-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: var(--transition-fast);
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+    
     .project-card .card-body {
       flex-grow: 1;
       display: flex;
@@ -322,7 +393,14 @@
       margin-right: 8px;
       margin-bottom: 8px;
       font-weight: 500;
+      transition: var(--transition-fast);
     }
+    
+    .project-tag:hover {
+      background-color: rgba(242, 182, 50, 0.25);
+      transform: translateY(-2px);
+    }
+    
     .light-mode .project-tag {
         color: var(--primary-dark);
         background-color: rgba(242, 182, 50, 0.2);
@@ -336,7 +414,14 @@
         font-size: 4rem;
         margin-bottom: 1.5rem;
         color: var(--primary);
+        transition: var(--transition-medium);
     }
+    
+    .linkedin-post-placeholder:hover .fab.fa-linkedin {
+        transform: scale(1.1) rotate(5deg);
+        text-shadow: 0 0 20px rgba(242,182,50,0.5);
+    }
+    
     .linkedin-post-placeholder h4 {
         margin-bottom: 1rem;
         font-weight: 600;
@@ -427,6 +512,7 @@
       background-color: var(--primary);
       color: var(--bg-darker) !important; /* Important to override nav-link color */
       box-shadow: var(--shadow-primary);
+      transform: translateY(-2px);
     }
     .toggle-switch .theme-icon { margin-right: 8px; }
     
@@ -459,6 +545,7 @@
       background-color: var(--primary);
       color: var(--bg-darker) !important;
       box-shadow: var(--shadow-primary);
+      transform: translateY(-2px);
     }
 
     /* Modals */
@@ -466,7 +553,11 @@
       border-radius: var(--border-radius-lg);
       border: none;
     }
-    .dark-mode .modal-content { background-color: var(--card-dark-bg); backdrop-filter: blur(5px); border: 1px solid var(--card-dark-border); }
+    .dark-mode .modal-content { 
+      background-color: var(--card-dark-bg); 
+      backdrop-filter: blur(10px); 
+      border: 1px solid var(--card-dark-border); 
+    }
     .light-mode .modal-content { background-color: var(--card-light-bg); }
     .dark-mode .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
     .light-mode .modal-header { border-bottom: 1px solid rgba(0,0,0,0.1); }
@@ -512,13 +603,13 @@
     /* Timeline styling */
     .timeline {
       position: relative;
-      padding-left: 40px; /* Increased padding */
+      padding-left: 20px; /* Reduced padding to account for the company logo */
       margin-top: 20px;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 10px; /* Adjusted for larger dot */
+      left: 25px; /* Adjusted for company logo position */
       top: 0;
       bottom: 0;
       width: 3px;
@@ -528,25 +619,34 @@
     .timeline-item {
       position: relative;
       margin-bottom: 40px;
-      padding-left: 30px; /* Increased padding */
     }
     .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -10px; /* Positioned relative to the line */
-      top: 5px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: var(--primary);
-      border: 4px solid var(--bg-dark); /* Creates a ring effect */
-      z-index: 1;
+
+    .timeline-item h4 { 
+      color: var(--primary); 
+      margin-bottom: 10px; 
+      font-weight: 600; 
+      transition: var(--transition-fast);
     }
-    .light-mode .timeline-item::before { border-color: var(--bg-light); }
-    .timeline-item h4 { color: var(--primary); margin-bottom: 10px; font-weight: 600; }
-    .timeline-item ul { padding-left: 20px; list-style-type: disc; }
-    .timeline-item li { margin-bottom: 10px; font-size: 0.95rem; }
+    
+    .timeline-item:hover h4 {
+      transform: translateX(5px);
+    }
+    
+    .timeline-item ul { 
+      padding-left: 20px; 
+      list-style-type: disc; 
+    }
+    
+    .timeline-item li { 
+      margin-bottom: 10px; 
+      font-size: 0.95rem; 
+      transition: var(--transition-fast);
+    }
+    
+    .timeline-item:hover li {
+      transform: translateX(3px);
+    }
 
     /* Form inputs */
     .form-control {
@@ -572,7 +672,6 @@
     .light-mode .form-control:focus { color: var(--text-dark); }
     .form-label { font-weight: 500; margin-bottom: 0.5rem; }
 
-
     /* Mobile responsiveness */
     @media (max-width: 991.98px) {
         .hero { text-align: center; }
@@ -587,8 +686,8 @@
       .hero img { max-width: 70%; }
       .section { padding: 80px 0; }
       .section-title { font-size: 1.8rem; }
-      .timeline::before { left: 5px; }
-      .timeline-item::before { left: -8px; width:18px; height:18px;}
+      .timeline::before { left: 25px; }
+      .company-logo { width: 40px; height: 40px; }
     }
     @media (max-width: 576px) {
       .hero h1 { font-size: 1.8rem; }
@@ -787,7 +886,8 @@
       <div class="row g-4 justify-content-center">
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="card project-card">
-            <img src="https://via.placeholder.com/400x250/F2B632/0A0A10?text=Project+Alpha" alt="Project Alpha Thumbnail"> <div class="card-body text-start p-4">
+            <img src="https://leptonsoftware.com/wp-content/uploads/2021/04/Lepton-white-logo-for-website.png" alt="Lepton Software"> 
+            <div class="card-body text-start p-4">
               <h4>OneForce UI (WFM System)</h4>
               <p class="small">Managed API requirements and development for Vi & Dialog WFM flow, enhancing operational efficiency.</p>
               <div class="project-tags">
@@ -804,7 +904,8 @@
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
           <div class="card project-card">
-            <img src="https://via.placeholder.com/400x250/3498DB/FFFFFF?text=Project+Beta" alt="Project Beta Thumbnail"> <div class="card-body text-start p-4">
+            <img src="https://cdn.dotpe.in/dotpe-website-live/images/dotpe-white-logo-svg.svg" alt="DotPe"> 
+            <div class="card-body text-start p-4">
               <h4>Enterprise API Integrations (DotPe)</h4>
               <p class="small">Led API integrations for major F&B clients (McD, Blue Tokai) with platforms like Swiggy & Zomato using PIPE.</p>
               <div class="project-tags">
@@ -821,7 +922,8 @@
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
           <div class="card project-card">
-             <img src="https://via.placeholder.com/400x250/2ECC71/FFFFFF?text=Project+Gamma" alt="Project Gamma Thumbnail"> <div class="card-body text-start p-4">
+             <img src="https://www.skillvertex.com/pl2024/img/logo.png" alt="Skillvertex"> 
+             <div class="card-body text-start p-4">
               <h4>Skillvertex Website Dev</h4>
               <p class="small">Developed the front-end for an EdTech platform using WordPress, HTML/CSS, focusing on user experience.</p>
               <div class="project-tags">
@@ -927,7 +1029,8 @@
   </div>
 
   <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl"> <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="resumeModalLabel">My Resume</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -955,47 +1058,81 @@
         <div class="modal-body">
           <div class="timeline">
             <div class="timeline-item">
-              <h4>Assistant Product Manager, Lepton Software (08/2024 – Present, Telecom)</h4>
-              <ul>
-                <li>Handling Vi (Vodafone) & Dialog WFM flow, API requirement and development.</li>
-                <li>Extensive experience in analysis, design, and implementation of project requirements.</li>
-                <li>Working with tools such as WFM and Smart Inventory.</li>
-                <li>Handling test flow for tickets raised via HPSM, OWS, NMS, etc.</li>
-                <li>Utilizing Oracle SQL Developer & pgAdmin to analyze API errors and ticket issues.</li>
-                <li>Conducting API testing in Postman for functional validation.</li>
-                <li>Leading a team of 4 developers (backend & frontend).</li>
-                <li>Working on MySQL, Postgres, APIs, and Inhouse tools.</li>
-              </ul>
+              <div class="company-logo">
+                <img src="https://cdn.prod.website-files.com/636a03b2715eea5c2e46fdab/637b07da707d74d3b53a7793_career.svg" alt="Fynd">
+              </div>
+              <div class="timeline-content">
+                <h4>Product Manager, Fynd (05/2024 – Present, E-commerce)</h4>
+                <ul>
+                  <li>Leading product development for Fynd Platform's retail and e-commerce solutions.</li>
+                  <li>Focusing on innovative features to enhance customer shopping experiences across mobile and web platforms.</li>
+                  <li>Collaborating with development teams to ensure seamless integration between online and offline retail operations.</li>
+                  <li>Analyzing market trends to identify growth opportunities in the e-commerce ecosystem.</li>
+                </ul>
+              </div>
             </div>
             <div class="timeline-item">
-              <h4>Assistant Integration Manager, DotPe (10/2021 – 01/2024, F&B, FinTech)</h4>
-              <ul>
-                <li>Partnered with Support Manager and IT Product teams to prioritize and address support tickets 24/7.</li>
-                <li>Provided product support and maintenance for specific ERP solutions.</li>
-                <li>Initiated API Integrations for businesses using PIPE (Postman, Swiggy, Zomato).</li>
-                <li>Worked on Data and Strategy using Redash & Snowflake.</li>
-                <li>Fixed TAT, SLA for FTP and ADSR integration ticket issues.</li>
-                <li>Handled sales dip and ftp data for enterprise clients (Blue Tokai, McD, Biryani Blues, etc.).</li>
-                <li>Led website/app integration with 3PO systems & payment gateways.</li>
-                <li>Managed inventory, supply chain complexities, and product requirements (ERP, CRM, POS).</li>
-                <li>Supervised a team of 6 Solution Managers.</li>
-              </ul>
+              <div class="company-logo">
+                <img src="https://leptonsoftware.com/wp-content/uploads/2021/04/Lepton-white-logo-for-website.png" alt="Lepton Software">
+              </div>
+              <div class="timeline-content">
+                <h4>Assistant Product Manager, Lepton Software (08/2023 – 04/2024, Telecom)</h4>
+                <ul>
+                  <li>Handling Vi (Vodafone) & Dialog WFM flow, API requirement and development.</li>
+                  <li>Extensive experience in analysis, design, and implementation of project requirements.</li>
+                  <li>Working with tools such as WFM and Smart Inventory.</li>
+                  <li>Handling test flow for tickets raised via HPSM, OWS, NMS, etc.</li>
+                  <li>Utilizing Oracle SQL Developer & pgAdmin to analyze API errors and ticket issues.</li>
+                  <li>Conducting API testing in Postman for functional validation.</li>
+                  <li>Leading a team of 4 developers (backend & frontend).</li>
+                  <li>Working on MySQL, Postgres, APIs, and Inhouse tools.</li>
+                </ul>
+              </div>
             </div>
             <div class="timeline-item">
-              <h4>Product Analyst, Planet Spark (04/2021 - 08/2021, EdTech)</h4>
-              <ul>
-                <li>Analyzed product performance and business insights for data-driven decisions.</li>
-                <li>Handled CRM (Salesforce) for lead management and user data tracking.</li>
-                <li>Managed B2B sales projects for product delivery and customer satisfaction.</li>
-              </ul>
+              <div class="company-logo">
+                <img src="https://cdn.dotpe.in/dotpe-website-live/images/dotpe-white-logo-svg.svg" alt="DotPe">
+              </div>
+              <div class="timeline-content">
+                <h4>Assistant Integration Manager, DotPe (10/2021 – 01/2024, F&B, FinTech)</h4>
+                <ul>
+                  <li>Partnered with Support Manager and IT Product teams to prioritize and address support tickets 24/7.</li>
+                  <li>Provided product support and maintenance for specific ERP solutions.</li>
+                  <li>Initiated API Integrations for businesses using PIPE (Postman, Swiggy, Zomato).</li>
+                  <li>Worked on Data and Strategy using Redash & Snowflake.</li>
+                  <li>Fixed TAT, SLA for FTP and ADSR integration ticket issues.</li>
+                  <li>Handled sales dip and ftp data for enterprise clients (Blue Tokai, McD, Biryani Blues, etc.).</li>
+                  <li>Led website/app integration with 3PO systems & payment gateways.</li>
+                  <li>Managed inventory, supply chain complexities, and product requirements (ERP, CRM, POS).</li>
+                  <li>Supervised a team of 6 Solution Managers.</li>
+                </ul>
+              </div>
             </div>
             <div class="timeline-item">
-              <h4>Web Developer, Skillvertex (01/2021 - 03/2021, EdTech)</h4>
-              <ul>
-                <li>Developed website using WordPress and HTML/CSS (Front-end).</li>
-                <li>Worked on backend data management. Website: skillvertex.in.</li>
-                <li>Handled microservices, FR & CR.</li>
-              </ul>
+              <div class="company-logo">
+                <img src="https://cdn.planetspark.in/assets/planetspark-logo-691be21aaf71832e7726422c207a4e5b0ff0012e8ca89c07f850a188a77d8ed8.webp" alt="Planet Spark">
+              </div>
+              <div class="timeline-content">
+                <h4>Product Analyst, Planet Spark (04/2021 - 08/2021, EdTech)</h4>
+                <ul>
+                  <li>Analyzed product performance and business insights for data-driven decisions.</li>
+                  <li>Handled CRM (Salesforce) for lead management and user data tracking.</li>
+                  <li>Managed B2B sales projects for product delivery and customer satisfaction.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="company-logo">
+                <img src="https://www.skillvertex.com/pl2024/img/logo.png" alt="Skillvertex">
+              </div>
+              <div class="timeline-content">
+                <h4>Web Developer, Skillvertex (01/2021 - 03/2021, EdTech)</h4>
+                <ul>
+                  <li>Developed website using WordPress and HTML/CSS (Front-end).</li>
+                  <li>Worked on backend data management. Website: skillvertex.in.</li>
+                  <li>Handled microservices, FR & CR.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -1043,10 +1180,10 @@
     </div>
   </div>
   
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.5/dist/tsparticles.min.js"></script>
 
   <script>
     // Initialize AOS animation
@@ -1152,30 +1289,30 @@
       });
     }
 
-    // tsParticles configuration
-    function loadParticles(options) {
+    // Updated loadParticles function
+    async function loadParticles(options) {
         const theme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
-        const particleColor = theme === 'dark' ? "#f2b632" : "#333333"; // Primary for dark, dark grey for light
+        const particleColor = theme === 'dark' ? "#f2b632" : "#333333";
         const lineColor = theme === 'dark' ? "#f2b632" : "#555555";
 
-        tsParticles.load("particles-js", {
+        await tsParticles.load("particles-js", {
             fpsLimit: 60,
             interactivity: {
                 events: {
                     onHover: {
                         enable: true,
-                        mode: "grab", // "grab" or "bubble" or "repulse"
+                        mode: "grab",
                     },
                     onClick: {
                         enable: true,
-                        mode: "push", // "push" or "remove"
+                        mode: "push",
                     },
                     resize: true,
                 },
                 modes: {
                     grab: {
                         distance: 140,
-                        line_linked: {
+                        links: {
                             opacity: 0.7,
                         },
                     },
@@ -1190,156 +1327,192 @@
                         duration: 0.4,
                     },
                     push: {
-                        particles_nb: 4,
+                        quantity: 4,
                     },
                     remove: {
-                        particles_nb: 2,
+                        quantity: 2,
                     },
                 },
             },
             particles: {
-                number: {
-                    value: 60, // Reduced for subtlety
-                    density: {
-                        enable: true,
-                        value_area: 800,
-                    },
-                },
                 color: {
                     value: particleColor,
-                },
-                shape: {
-                    type: "circle", // "circle", "edge", "triangle", "polygon", "star"
-                },
-                opacity: {
-                    value: 0.4, // Softer opacity
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 0.5,
-                        opacity_min: 0.1,
-                        sync: false,
-                    },
-                },
-                size: {
-                    value: 2, // Smaller particles
-                    random: true,
-                    anim: {
-                        enable: false,
-                        speed: 2,
-                        size_min: 0.3,
-                        sync: false,
-                    },
                 },
                 links: {
                     color: lineColor,
                     distance: 150,
                     enable: true,
-                    opacity: 0.2, // Softer links
+                    opacity: 0.2,
                     width: 1,
                 },
                 move: {
                     enable: true,
-                    speed: 1, // Slower movement
+                    speed: 1,
                     direction: "none",
                     random: true,
                     straight: false,
-                    out_mode: "out", // "out", "bounce"
+                    outModes: {
+                        default: "out",
+                    },
                     attract: {
                         enable: false,
-                        rotateX: 600,
-                        rotateY: 1200,
+                        rotate: {
+                            x: 600,
+                            y: 1200,
+                        },
+                    },
+                },
+                number: {
+                    value: 60,
+                    density: {
+                        enable: true,
+                        area: 800,
+                    },
+                },
+                opacity: {
+                    value: 0.4,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 0.5,
+                        minimumValue: 0.1,
+                        sync: false,
+                    },
+                },
+                shape: {
+                    type: "circle",
+                },
+                size: {
+                    value: 2,
+                    random: true,
+                    animation: {
+                        enable: false,
+                        speed: 2,
+                        minimumValue: 0.3,
+                        sync: false,
                     },
                 },
             },
             detectRetina: true,
         });
     }
-    // Store the config globally to be re-used by theme switcher
-    window.currentParticlesConfig = {}; 
-    loadParticles(window.currentParticlesConfig);
 
+    // Initialize particles after DOM content is loaded
+    document.addEventListener("DOMContentLoaded", async () => {
+        window.currentParticlesConfig = {};
+        await loadParticles(window.currentParticlesConfig);
+    });
 
     // Contact Form Submission (AJAX for Netlify)
-const contactForm = document.getElementById('contactForm');
-const formStatusMessage = document.getElementById('formStatusMessage'); // Get the div for messages
+    const contactForm = document.getElementById('contactForm');
+    const formStatusMessage = document.createElement('div'); // Create element for form status messages
+    formStatusMessage.className = 'mt-3 small';
+    
+    if (contactForm) {
+      // Append the message element to the form
+      contactForm.appendChild(formStatusMessage);
+      
+      contactForm.addEventListener('submit', async event => {
+        event.preventDefault(); // Prevent the default browser submission
 
-if (contactForm && formStatusMessage) {
-  contactForm.addEventListener('submit', async event => {
-    event.preventDefault(); // Prevent the default browser submission
+        // --- 1. Clear previous messages and Get Form Data ---
+        formStatusMessage.textContent = '';
+        formStatusMessage.className = 'mt-3 small'; // Reset classes, keep margin
 
-    // --- 1. Clear previous messages and Get Form Data ---
-    formStatusMessage.textContent = '';
-    formStatusMessage.className = 'mt-3 small'; // Reset classes, keep margin
+        const formData = new FormData(contactForm);
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
 
-    const formData = new FormData(contactForm);
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
+        // --- 2. Basic Client-Side Validation ---
+        const name = formData.get('name').trim();
+        const email = formData.get('email').trim();
+        const message = formData.get('message').trim();
+        let errors = [];
 
-    // --- 2. Basic Client-Side Validation ---
-    const name = formData.get('name').trim();
-    const email = formData.get('email').trim();
-    const message = formData.get('message').trim();
-    let errors = [];
+        if (name === '') errors.push('Name is required.');
+        if (email === '') {
+          errors.push('Email is required.');
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // Simple email format check
+          errors.push('Please enter a valid email address.');
+        }
+        if (message === '') errors.push('Message is required.');
 
-    if (name === '') errors.push('Name is required.');
-    if (email === '') {
-      errors.push('Email is required.');
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // Simple email format check
-      errors.push('Please enter a valid email address.');
-    }
-    if (message === '') errors.push('Message is required.');
+        if (errors.length > 0) {
+          formStatusMessage.textContent = 'Error: ' + errors.join(' ');
+          formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
+          return; // Stop if validation fails
+        }
 
-    if (errors.length > 0) {
-      formStatusMessage.textContent = 'Error: ' + errors.join(' ');
-      formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
-      return; // Stop if validation fails
-    }
+        // --- 3. Prepare for Submission (UI feedback) ---
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+        formStatusMessage.textContent = 'Sending your message...';
+        formStatusMessage.classList.add('alert', 'alert-info', 'p-2');
 
-    // --- 3. Prepare for Submission (UI feedback) ---
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
-    formStatusMessage.textContent = 'Sending your message...';
-    formStatusMessage.classList.add('alert', 'alert-info', 'p-2');
+        try {
+          // --- 4. AJAX Submission using Fetch ---
+          const response = await fetch(contactForm.action, { // Uses form's 'action' attribute
+            method: 'POST',
+            headers: {
+              // Netlify expects URL encoded data for simple forms submitted via AJAX
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            // Convert FormData to URL-encoded string
+            body: new URLSearchParams(formData).toString(),
+          });
 
-    try {
-      // --- 4. AJAX Submission using Fetch ---
-      const response = await fetch(contactForm.action, { // Uses form's 'action' attribute
-        method: 'POST',
-        headers: {
-          // Netlify expects URL encoded data for simple forms submitted via AJAX
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        // Convert FormData to URL-encoded string
-        body: new URLSearchParams(formData).toString(),
+          if (response.ok) {
+            // --- 5. Handle Successful Submission ---
+            formStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
+            formStatusMessage.classList.remove('alert-info');
+            formStatusMessage.classList.add('alert', 'alert-success', 'p-2');
+            contactForm.reset(); // Clear the form fields
+            console.log('Form submitted successfully via AJAX to Netlify.');
+          } else {
+            // --- 6. Handle Submission Error from Server ---
+            // You might get an error page HTML back from Netlify, or a specific status
+            const errorText = await response.text(); // Get more details if available
+            throw new Error(`Server error: ${response.status} ${response.statusText}. ${errorText}`);
+          }
+        } catch (error) {
+          // --- 7. Handle Network or Other Errors ---
+          formStatusMessage.textContent = 'Sorry, there was an error sending your message. Please try again or contact me directly via email.';
+          formStatusMessage.classList.remove('alert-info');
+          formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
+          console.error('Form submission error:', error);
+        } finally {
+          // --- 8. Reset Button State ---
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+        }
       });
-
-      if (response.ok) {
-        // --- 5. Handle Successful Submission ---
-        formStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
-        formStatusMessage.classList.remove('alert-info');
-        formStatusMessage.classList.add('alert', 'alert-success', 'p-2');
-        contactForm.reset(); // Clear the form fields
-        console.log('Form submitted successfully via AJAX to Netlify.');
-      } else {
-        // --- 6. Handle Submission Error from Server ---
-        // You might get an error page HTML back from Netlify, or a specific status
-        const errorText = await response.text(); // Get more details if available
-        throw new Error(`Server error: ${response.status} ${response.statusText}. ${errorText}`);
-      }
-    } catch (error) {
-      // --- 7. Handle Network or Other Errors ---
-      formStatusMessage.textContent = 'Sorry, there was an error sending your message. Please try again or contact me directly via email.';
-      formStatusMessage.classList.remove('alert-info');
-      formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
-      console.error('Form submission error:', error);
-    } finally {
-      // --- 8. Reset Button State ---
-      submitButton.disabled = false;
-      submitButton.innerHTML = originalButtonText;
     }
-  });
-}
+
+    // Add active class to nav item based on scroll position
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (scrollY >= (sectionTop - 300)) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
