@@ -9,7 +9,7 @@
   <title>Aryan Sharma | Product & Project Manager</title>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
@@ -17,88 +17,98 @@
     /* 🔒 Disable text selection/copy-paste */
     /* body { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; } */
     /* Temporarily commented out for easier development/testing */
-
+    
     :root {
       --primary: #f2b632; /* Yellow Gold */
       --primary-dark: #e0a72b;
       --primary-light: #f5c961;
       --secondary: #3498db; /* A nice blue for accents */
-
       --bg-dark: #10101a; /* Darker, slightly blueish black */
       --bg-darker: #0a0a10;
       --card-dark-bg: rgba(30, 30, 45, 0.7); /* Semi-transparent for glassmorphism */
       --card-dark-border: rgba(255, 255, 255, 0.1);
-      
       --bg-light: #f4f7f9; /* Off-white */
       --bg-lighter: #ffffff;
       --card-light-bg: rgba(255, 255, 255, 0.8);
       --card-light-border: rgba(0, 0, 0, 0.08);
-
       --text-light: #e0e0e0;
       --text-lighter: #ffffff;
       --text-dark: #333333;
       --text-darker: #222222;
-
       --nav-dark-bg: rgba(20, 20, 30, 0.95); /* More opacity for better visibility */
       --nav-light-bg: rgba(255, 255, 255, 0.9);
       --nav-blur: blur(15px);
-
       --hero-dark-bg: transparent; /* Particles will be the background */
       --hero-light-bg: transparent;
-
       --transition-fast: all 0.2s ease-in-out;
       --transition-medium: all 0.4s ease-in-out;
-
       --border-radius-sm: 0.3rem;
       --border-radius-md: 0.75rem;
       --border-radius-lg: 1rem;
-
       --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
       --shadow-md: 0 8px 25px rgba(0,0,0,0.1);
       --shadow-lg: 0 12px 35px rgba(0,0,0,0.15);
       --shadow-primary: 0 0 20px rgba(242, 182, 50, 0.5);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Inter', sans-serif; /* Inter for body text readability */
+      font-family: 'Poppins', 'Inter', sans-serif;
       transition: var(--transition-medium);
       line-height: 1.7;
       font-weight: 400;
-      overflow-x: hidden; 
+      overflow-x: hidden; /* Prevent horizontal scroll from AOS or other elements */
     }
 
-    h1, h2, h3, h4, h5, h6, .navbar-brand {
-      font-family: 'Poppins', sans-serif; /* Poppins for punchy headers */
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
     }
 
-    body.dark-mode { background-color: var(--bg-dark); color: var(--text-light); }
-    body.light-mode { background-color: var(--bg-light); color: var(--text-dark); }
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
 
     /* Navbar */
-    .navbar { transition: var(--transition-medium); padding-top: 1rem; padding-bottom: 1rem; }
-    .navbar.scrolled { box-shadow: var(--shadow-md); }
-    
+    .navbar {
+      transition: var(--transition-medium);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
     .dark-mode .navbar.scrolled {
       background-color: var(--nav-dark-bg);
       backdrop-filter: var(--nav-blur);
       -webkit-backdrop-filter: var(--nav-blur);
     }
+
     .light-mode .navbar.scrolled {
       background-color: var(--nav-light-bg);
       backdrop-filter: var(--nav-blur);
       -webkit-backdrop-filter: var(--nav-blur);
     }
 
-    .navbar-brand { font-weight: 700; font-size: 1.5rem; color: var(--primary) !important; }
-    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary) !important;
+    }
+
     .nav-link {
       font-weight: 500;
       transition: var(--transition-fast);
       margin: 0 0.5rem;
       position: relative;
     }
+
     .nav-link::after {
       content: '';
       position: absolute;
@@ -110,17 +120,34 @@
       transition: var(--transition-fast);
       transform: translateX(-50%);
     }
-    .nav-link:hover::after, .nav-link.active::after { width: 70%; }
 
-    .dark-mode .nav-link { color: var(--text-light) !important; }
-    .dark-mode .nav-link:hover, .dark-mode .nav-link.active { color: var(--primary) !important; }
-    
-    .light-mode .nav-link { color: var(--text-dark) !important; }
-    .light-mode .nav-link:hover, .light-mode .nav-link.active { color: var(--primary) !important; }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 70%;
+    }
+
+    .dark-mode .nav-link {
+      color: var(--text-light) !important;
+    }
+
+    .dark-mode .nav-link:hover,
+    .dark-mode .nav-link.active {
+      color: var(--primary) !important;
+    }
+
+    .light-mode .nav-link {
+      color: var(--text-dark) !important;
+    }
+
+    .light-mode .nav-link:hover,
+    .light-mode .nav-link.active {
+      color: var(--primary) !important;
+    }
 
     .dark-mode .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28242, 182, 50, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
+
     .light-mode .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2840, 40, 40, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
@@ -130,32 +157,52 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 150px 20px 80px;
+      padding: 150px 20px 80px; /* Increased top padding for navbar */
       position: relative;
-      overflow: hidden;
+      overflow: hidden; /* For particle canvas */
     }
-    
+
     #particles-js {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Behind hero content */
     }
 
-    .hero.dark-mode { background-color: var(--hero-dark-bg); color: var(--text-lighter); }
-    .hero.light-mode { background-color: var(--hero-light-bg); color: var(--text-darker); }
-    
-    .light-mode .hero h1, .light-mode .hero p { color: var(--text-darker)}
-    .dark-mode .hero h1, .dark-mode .hero p { color: var(--text-lighter)}
+    .hero.dark-mode {
+      background-color: var(--hero-dark-bg);
+      color: var(--text-lighter);
+    }
+
+    .hero.light-mode {
+      background-color: var(--hero-light-bg);
+      color: var(--text-darker);
+    }
+
+    .light-mode .hero h1,
+    .light-mode .hero p {
+      color: var(--text-darker);
+    }
+
+    .dark-mode .hero h1,
+    .dark-mode .hero p {
+      color: var(--text-lighter);
+    }
 
     .hero h1 {
+      font-family: 'Inter', sans-serif;
       font-size: clamp(2.2rem, 5vw, 3.5rem);
       font-weight: 800;
       margin-bottom: 25px;
       line-height: 1.3;
     }
-    .hero h1 .typed-text { color: var(--primary); }
-    
+
+    .hero h1 .typed-text {
+      color: var(--primary);
+    }
+
     .hero p.lead {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       margin-bottom: 35px;
@@ -163,7 +210,10 @@
       max-width: 600px;
     }
 
-    .hero-image-container { position: relative; }
+    .hero-image-container {
+      position: relative;
+    }
+
     .hero img {
       max-width: 70%;
       height: auto;
@@ -173,33 +223,51 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
       transition: var(--transition-medium);
     }
-    .dark-mode .hero img { box-shadow: 0 0 30px rgba(242,182,50,0.3), 0 10px 30px rgba(0,0,0,0.5); }
-    .light-mode .hero img { box-shadow: 0 0 20px rgba(242,182,50,0.4), 0 10px 30px rgba(0,0,0,0.2); }
-    
+
+    .dark-mode .hero img {
+      box-shadow: 0 0 30px rgba(242,182,50,0.3), 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .light-mode .hero img {
+      box-shadow: 0 0 20px rgba(242,182,50,0.4), 0 10px 30px rgba(0,0,0,0.2);
+    }
+
     .hero img:hover {
       transform: scale(1.03) translateY(-5px);
       box-shadow: 0 0 40px var(--primary-dark), var(--shadow-lg);
     }
 
     /* Sections */
-    .section { padding: 100px 0; }
-    
+    .section {
+      padding: 100px 0;
+    }
+
     .section-title {
+      font-family: 'Inter', sans-serif;
       font-weight: 700;
       font-size: clamp(2rem, 4vw, 2.8rem);
       margin-bottom: 60px;
       position: relative;
       display: inline-block;
+      color: var(--primary);
     }
-    .dark-mode .section-title { color: var(--primary); }
-    .light-mode .section-title { color: var(--primary-dark); }
-    
+
+    .dark-mode .section-title {
+      color: var(--primary);
+    }
+
+    .light-mode .section-title {
+      color: var(--primary-dark);
+    }
+
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -15px; left: 50%;
+      bottom: -15px;
+      left: 50%;
       transform: translateX(-50%);
-      width: 100px; height: 4px;
+      width: 100px;
+      height: 4px;
       background-color: var(--primary);
       border-radius: 2px;
     }
@@ -213,32 +281,50 @@
       backdrop-filter: var(--nav-blur);
       -webkit-backdrop-filter: var(--nav-blur);
     }
+
     .dark-mode .card {
       background: var(--card-dark-bg);
       color: var(--text-light);
       border-color: var(--card-dark-border);
       box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.37);
     }
+
     .light-mode .card {
       background: var(--card-light-bg);
       color: var(--text-dark);
       border-color: var(--card-light-border);
       box-shadow: var(--shadow-md);
     }
-    
+
     .card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
     }
-    .dark-mode .card:hover { box-shadow: 0 0 35px rgba(242,182,50,0.2), 0 10px 30px rgba(0,0,0,0.5); }
-    .light-mode .card:hover { box-shadow: 0 0 25px rgba(242,182,50,0.3), var(--shadow-lg); }
 
-    .card h3, .card h4 {
+    .dark-mode .card:hover {
+      box-shadow: 0 0 35px rgba(242,182,50,0.2), 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .light-mode .card:hover {
+      box-shadow: 0 0 25px rgba(242,182,50,0.3), var(--shadow-lg);
+    }
+
+    .card h3,
+    .card h4 {
+      color: var(--primary);
       margin-bottom: 15px;
       font-weight: 600;
     }
-    .dark-mode .card h3, .dark-mode .card h4 { color: var(--primary); }
-    .light-mode .card h3, .light-mode .card h4 { color: var(--primary-dark); }
+
+    .dark-mode .card h3,
+    .dark-mode .card h4 {
+      color: var(--primary);
+    }
+
+    .light-mode .card h3,
+    .light-mode .card h4 {
+      color: var(--primary-dark);
+    }
 
     /* Services Section */
     .services .card .icon {
@@ -248,6 +334,7 @@
       display: inline-block;
       transition: var(--transition-medium);
     }
+
     .services .card:hover .icon {
       transform: translateY(-5px) scale(1.1);
       text-shadow: 0 0 15px rgba(242,182,50,0.6);
@@ -260,29 +347,48 @@
       gap: 12px;
       margin-top: 25px;
     }
+
     .skill-badge {
       background-color: var(--primary);
       color: var(--bg-darker);
       padding: 8px 18px;
       border-radius: var(--border-radius-sm);
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 500;
       transition: var(--transition-fast);
     }
+
     .skill-badge:hover {
       transform: scale(1.05);
       background-color: var(--primary-dark);
     }
-    .light-mode .skill-badge { background-color: var(--primary-light); color: var(--text-darker); }
-    .light-mode .skill-badge:hover { background-color: var(--primary); }
+
+    .light-mode .skill-badge {
+      background-color: var(--primary-light);
+      color: var(--text-darker);
+    }
+
+    .light-mode .skill-badge:hover {
+      background-color: var(--primary);
+    }
 
     /* Projects Section */
-    #projects { background-color: var(--bg-darker); }
-    body.light-mode #projects { background-color: var(--bg-lighter); }
-    
-    .project-card { display: flex; flex-direction: column; }
+    #projects {
+      background-color: var(--bg-darker);
+    }
+
+    body.light-mode #projects {
+      background-color: var(--bg-lighter);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+    }
+
     .project-card img {
-      width: 100%; height: 160px;
+      width: 100%;
+      height: 160px;
       object-fit: contain;
       padding: 20px;
       background-color: #0a0a10;
@@ -291,38 +397,63 @@
       margin-bottom: 0;
       transition: transform 0.3s ease;
     }
-    .project-card:hover img { transform: scale(1.05); }
-    
-    .timeline-item { display: flex; gap: 15px; }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 15px;
+    }
+
     .company-logo {
-      width: 50px; height: 50px;
-      flex-shrink: 0; padding: 5px;
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      padding: 5px;
       background: rgba(10, 10, 16, 0.8);
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-top: 5px;
       border: 1px solid var(--card-dark-border);
       overflow: hidden;
       transition: var(--transition-fast);
     }
+
     .light-mode .company-logo {
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--card-light-border);
     }
+
     .company-logo:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px rgba(242,182,50,0.3);
     }
+
     .company-logo img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       transition: var(--transition-fast);
     }
-    
-    .timeline-content { flex: 1; }
-    .project-card .card-body { flex-grow: 1; display: flex; flex-direction: column; }
-    
-    .project-tags { margin-bottom: 15px; }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .project-card .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-tags {
+      margin-bottom: 15px;
+    }
+
     .project-tag {
       display: inline-block;
       background-color: rgba(242, 182, 50, 0.15);
@@ -330,141 +461,291 @@
       padding: 5px 12px;
       border-radius: var(--border-radius-sm);
       font-size: 0.75rem;
-      margin-right: 8px; margin-bottom: 8px;
+      margin-right: 8px;
+      margin-bottom: 8px;
       font-weight: 500;
       transition: var(--transition-fast);
     }
+
     .project-tag:hover {
       background-color: rgba(242, 182, 50, 0.25);
       transform: translateY(-2px);
     }
+
     .light-mode .project-tag {
       color: var(--primary-dark);
       background-color: rgba(242, 182, 50, 0.2);
     }
-    .project-links a { margin-right: 10px; }
+
+    .project-links a {
+      margin-right: 10px;
+    }
 
     /* LinkedIn Section */
     .linkedin-post-placeholder .fab.fa-linkedin {
-      font-size: 4rem; margin-bottom: 1.5rem;
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
       color: var(--primary);
       transition: var(--transition-medium);
     }
+
     .linkedin-post-placeholder:hover .fab.fa-linkedin {
       transform: scale(1.1) rotate(5deg);
       text-shadow: 0 0 20px rgba(242,182,50,0.5);
     }
-    .linkedin-post-placeholder h4 { margin-bottom: 1rem; font-weight: 600; }
+
+    .linkedin-post-placeholder h4 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
 
     /* Testimonials Section */
-    #testimonials { background-color: var(--bg-darker); }
-    body.light-mode #testimonials { background-color: var(--bg-lighter); }
-    
+    #testimonials {
+      background-color: var(--bg-darker);
+    }
+
+    body.light-mode #testimonials {
+      background-color: var(--bg-lighter);
+    }
+
     .testimonial-card {
       border-left: 4px solid var(--primary);
-      padding: 25px; margin-bottom: 30px;
-      background: transparent;
+      padding: 25px;
+      margin-bottom: 30px;
+      background: transparent; /* Card styling is general now */
       border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
     }
-    .testimonial-author { font-weight: 600; margin-top: 20px; color: var(--primary); }
-    .testimonial-role { font-size: 0.9rem; opacity: 0.8; }
-    
-    .carousel-control-prev-icon, .carousel-control-next-icon {
+
+    .testimonial-author {
+      font-weight: 600;
+      margin-top: 20px;
+      color: var(--primary);
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
       background-color: var(--primary);
       border-radius: 50%;
-      padding: 15px; width: 20px; height: 20px;
+      padding: 15px; /* Adjust size */
+      width: 20px; /* Ensure square shape */
+      height: 20px;
       background-size: 60% 60%;
     }
-    .carousel-indicators [data-bs-target] { background-color: var(--primary); opacity: 0.5; }
-    .carousel-indicators .active { opacity: 1; }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: var(--primary);
+      opacity: 0.5;
+    }
+
+    .carousel-indicators .active {
+      opacity: 1;
+    }
 
     /* Footer */
-    footer { text-align: center; padding: 50px 0; transition: var(--transition-medium); }
-    .dark-mode footer { background-color: var(--bg-darker); color: var(--text-light); }
-    .light-mode footer { background-color: var(--bg-lighter); color: var(--text-dark); box-shadow: 0 -5px 15px rgba(0,0,0,0.03); }
-    
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      transition: var(--transition-medium);
+    }
+
+    .dark-mode footer {
+      background-color: var(--bg-darker);
+      color: var(--text-light);
+    }
+
+    .light-mode footer {
+      background-color: var(--bg-lighter);
+      color: var(--text-dark);
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+    }
+
     .social-icons a {
-      margin: 0 15px; font-size: 1.8rem;
+      margin: 0 15px;
+      font-size: 1.8rem;
       transition: var(--transition-fast);
       display: inline-block;
     }
-    .dark-mode .social-icons a { color: var(--text-light); }
-    .light-mode .social-icons a { color: var(--text-dark); }
-    .social-icons a:hover { color: var(--primary); transform: translateY(-5px) scale(1.1); }
+
+    .dark-mode .social-icons a {
+      color: var(--text-light);
+    }
+
+    .light-mode .social-icons a {
+      color: var(--text-dark);
+    }
+
+    .social-icons a:hover {
+      color: var(--primary);
+      transform: translateY(-5px) scale(1.1);
+    }
 
     /* Theme Toggle Button */
     .toggle-switch {
-      cursor: pointer; background: transparent;
-      border: 1px solid var(--primary); color: var(--primary);
-      font-size: 1rem; padding: 8px 15px;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-size: 1rem;
+      padding: 8px 15px;
       border-radius: var(--border-radius-sm);
       transition: var(--transition-fast);
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
     }
+
     .toggle-switch:hover {
+      background-color: var(--primary);
+      color: var(--bg-darker) !important; /* Important to override nav-link color */
+      box-shadow: var(--shadow-primary);
+      transform: translateY(-2px);
+    }
+
+    .toggle-switch .theme-icon {
+      margin-right: 8px;
+    }
+
+    /* Buttons */
+    .btn-warning {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--bg-darker) !important; /* High contrast for text on primary */
+      font-weight: 600;
+      padding: 10px 25px;
+      transition: var(--transition-fast);
+      border-radius: var(--border-radius-sm);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-warning:hover,
+    .btn-warning:focus {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-primary);
+    }
+
+    .btn-outline-warning {
+      color: var(--primary);
+      border-color: var(--primary);
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition-fast);
+    }
+
+    .btn-outline-warning:hover {
       background-color: var(--primary);
       color: var(--bg-darker) !important;
       box-shadow: var(--shadow-primary);
       transform: translateY(-2px);
     }
-    .toggle-switch .theme-icon { margin-right: 8px; }
-
-    /* Buttons */
-    .btn-warning {
-      background-color: var(--primary); border-color: var(--primary);
-      color: var(--bg-darker) !important; font-weight: 600;
-      padding: 10px 25px; transition: var(--transition-fast);
-      border-radius: var(--border-radius-sm); box-shadow: var(--shadow-sm);
-    }
-    .btn-warning:hover, .btn-warning:focus {
-      background-color: var(--primary-dark); border-color: var(--primary-dark);
-      transform: translateY(-2px); box-shadow: var(--shadow-primary);
-    }
-    .btn-outline-warning {
-      color: var(--primary); border-color: var(--primary);
-      font-weight: 600; padding: 10px 25px;
-      border-radius: var(--border-radius-sm); transition: var(--transition-fast);
-    }
-    .btn-outline-warning:hover {
-      background-color: var(--primary); color: var(--bg-darker) !important;
-      box-shadow: var(--shadow-primary); transform: translateY(-2px);
-    }
 
     /* Modals */
-    .modal-content { border-radius: var(--border-radius-lg); border: none; }
+    .modal-content {
+      border-radius: var(--border-radius-lg);
+      border: none;
+    }
+
     .dark-mode .modal-content {
       background-color: var(--card-dark-bg);
       backdrop-filter: blur(10px);
       border: 1px solid var(--card-dark-border);
     }
-    .light-mode .modal-content { background-color: var(--card-light-bg); }
-    .dark-mode .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .light-mode .modal-header { border-bottom: 1px solid rgba(0,0,0,0.1); }
-    .dark-mode .modal-title { color: var(--text-lighter); }
-    .light-mode .modal-title { color: var(--text-darker); }
-    .dark-mode .modal-body { color: var(--text-light); }
-    .light-mode .modal-body { color: var(--text-dark); }
-    .dark-mode .modal-body h4 { color: var(--primary); }
-    .light-mode .modal-body h4 { color: var(--primary-dark); }
-    .dark-mode .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+
+    .light-mode .modal-content {
+      background-color: var(--card-light-bg);
+    }
+
+    .dark-mode .modal-header {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .light-mode .modal-header {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .dark-mode .modal-title {
+      color: var(--text-lighter);
+    }
+
+    .light-mode .modal-title {
+      color: var(--text-darker);
+    }
+
+    .dark-mode .modal-body {
+      color: var(--text-light);
+    }
+
+    .light-mode .modal-body {
+      color: var(--text-dark);
+    }
+
+    .dark-mode .modal-body h4 {
+      color: var(--primary);
+    }
+
+    .light-mode .modal-body h4 {
+      color: var(--primary-dark);
+    }
+
+    .dark-mode .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
 
     /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--bg-darker); }
-    .light-mode ::-webkit-scrollbar-track { background: var(--bg-lighter); }
-    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-darker);
+    }
+
+    .light-mode ::-webkit-scrollbar-track {
+      background: var(--bg-lighter);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
 
     /* Back to top button */
     .back-to-top {
-      position: fixed; bottom: 25px; right: 25px;
-      width: 50px; height: 50px;
-      background-color: var(--primary); color: var(--bg-darker) !important;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden;
-      transition: var(--transition-medium); z-index: 1000; box-shadow: var(--shadow-md);
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--bg-darker) !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-medium);
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
     }
-    .back-to-top.active { opacity: 1; visibility: visible; }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .back-to-top:hover {
       background-color: var(--primary-dark);
       transform: translateY(-3px) scale(1.05);
@@ -472,74 +753,180 @@
     }
 
     /* Timeline styling */
-    .timeline { position: relative; padding-left: 20px; margin-top: 20px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 25px;
-      top: 0; bottom: 0; width: 3px;
-      background-color: var(--primary); border-radius: 2px;
+    .timeline {
+      position: relative;
+      padding-left: 20px; /* Reduced padding to account for the company logo */
+      margin-top: 20px;
     }
-    .timeline-item { position: relative; margin-bottom: 40px; }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-item h4 { color: var(--primary); margin-bottom: 10px; font-weight: 600; transition: var(--transition-fast); }
-    .timeline-item:hover h4 { transform: translateX(5px); }
-    .timeline-item ul { padding-left: 20px; list-style-type: disc; }
-    .timeline-item li { margin-bottom: 10px; font-size: 0.95rem; transition: var(--transition-fast); }
-    .timeline-item:hover li { transform: translateX(3px); }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 25px; /* Adjusted for company logo position */
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+      transition: var(--transition-fast);
+    }
+
+    .timeline-item:hover h4 {
+      transform: translateX(5px);
+    }
+
+    .timeline-item ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    .timeline-item li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      transition: var(--transition-fast);
+    }
+
+    .timeline-item:hover li {
+      transform: translateX(3px);
+    }
 
     /* Form inputs */
-    .form-control, .form-select {
-      background-color: transparent; border: 1px solid;
-      transition: var(--transition-fast); padding: 0.75rem 1rem;
+    .form-control {
+      background-color: transparent;
+      border: 1px solid;
+      transition: var(--transition-fast);
+      padding: 0.75rem 1rem;
     }
-    .dark-mode .form-control, .dark-mode .form-select {
-      color: var(--text-light); border-color: rgba(255,255,255,0.2);
+
+    .dark-mode .form-control {
+      color: var(--text-light);
+      border-color: rgba(255,255,255,0.2);
     }
-    .light-mode .form-control, .light-mode .form-select {
-      color: var(--text-dark); border-color: rgba(0,0,0,0.2);
+
+    .light-mode .form-control {
+      color: var(--text-dark);
+      border-color: rgba(0,0,0,0.2);
     }
-    .form-control:focus, .form-select:focus {
-      background-color: transparent; border-color: var(--primary);
+
+    .form-control:focus {
+      background-color: transparent;
+      border-color: var(--primary);
       box-shadow: 0 0 0 0.2rem rgba(242,182,50,0.25);
     }
-    .dark-mode .form-control:focus, .dark-mode .form-select:focus { color: var(--text-light); }
-    .light-mode .form-control:focus, .light-mode .form-select:focus { color: var(--text-dark); }
-    
-    .dark-mode select.form-select option { background-color: var(--bg-dark); color: var(--text-light); }
-    .light-mode select.form-select option { background-color: var(--bg-light); color: var(--text-dark); }
 
-    .form-label { font-weight: 500; margin-bottom: 0.5rem; }
+    .dark-mode .form-control:focus {
+      color: var(--text-light);
+    }
+
+    .light-mode .form-control:focus {
+      color: var(--text-dark);
+    }
+
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
 
     /* Mobile responsiveness */
     @media (max-width: 991.98px) {
-      .hero { text-align: center; }
-      .hero .d-flex { justify-content: center !important; }
-      .hero-image-container { margin-top: 40px; }
-      .hero img { max-width: 60%; }
+      .hero {
+        text-align: center;
+      }
+      .hero .d-flex {
+        justify-content: center !important;
+      }
+      .hero-image-container {
+        margin-top: 40px;
+      }
+      .hero img {
+        max-width: 60%;
+      }
     }
+
     @media (max-width: 768px) {
-      .hero { padding: 120px 20px 60px; }
-      .hero h1 { font-size: 2rem; }
-      .hero p.lead { font-size: 1rem; }
-      .hero img { max-width: 70%; }
-      .section { padding: 80px 0; }
-      .section-title { font-size: 1.8rem; }
-      .timeline::before { left: 25px; }
-      .company-logo { width: 40px; height: 40px; }
+      .hero {
+        padding: 120px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p.lead {
+        font-size: 1rem;
+      }
+      .hero img {
+        max-width: 70%;
+      }
+      .section {
+        padding: 80px 0;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .timeline::before {
+        left: 25px;
+      }
+      .company-logo {
+        width: 40px;
+        height: 40px;
+      }
     }
+
     @media (max-width: 576px) {
-      .hero h1 { font-size: 1.8rem; }
-      .hero img { max-width: 80%; }
-      .section-title { font-size: 1.6rem; }
-      .social-icons a { font-size: 1.5rem; margin: 0 10px;}
-      .btn-warning, .btn-outline-warning { padding: 8px 20px; font-size: 0.9rem;}
-      .back-to-top { width: 40px; height: 40px; font-size: 16px;}
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero img {
+        max-width: 80%;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+      }
+      .btn-warning,
+      .btn-outline-warning {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body class="dark-mode" data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
 
   <script>
-    // Dynamic copyright injection (FIXED Template Literal Backticks)
+    // Block right-click + Ctrl/Cmd+U, S, C, P
+    /* document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = (e) => {
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'p' || e.key === 'P')) e.preventDefault();
+      if (e.metaKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'p' || e.key === 'P')) e.preventDefault();
+      if (e.key === 'F12') e.preventDefault();
+    }; 
+    */
+    // Temporarily commented out for easier development
+
+    // Dynamic copyright injection
     document.addEventListener('DOMContentLoaded', () => {
       const footerYear = document.getElementById('currentYear');
       if (footerYear) {
@@ -547,6 +934,7 @@
       }
       const footerText = document.querySelector('footer .copyright-text');
       if (footerText) {
+        // FIXED: Added backticks around the template literal
         footerText.innerHTML = `© ${new Date().getFullYear()} <a href="#" style="color:var(--primary); text-decoration:none;">Aryan Sharma</a>. All Rights Reserved.`;
       }
     });
@@ -560,12 +948,24 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#linkedinPosts">Posts</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#linkedinPosts">Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
+          </li>
           <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
             <button class="btn toggle-switch" onclick="toggleTheme()" aria-label="Toggle theme">
               <span class="theme-icon" id="themeIcon"></span>
@@ -585,12 +985,21 @@
           <p class="text-uppercase mb-2 fw-semibold" style="color: var(--primary); letter-spacing: 1px;">Aryan Sharma</p>
           <h1><span class="typed-text"></span><br/>for Disruptors.</h1>
           <p class="lead">
-            I specialize in turning innovative ideas into impactful digital products, identifying and addressing unmet customer needs. With 4 years of experience in Product & Project Management, I've scaled solutions for enterprise clients across F&B, Telecom, EdTech, and FinTech.
+            I specialize in turning innovative ideas into impactful digital products, with a passion for identifying and addressing unmet customer needs. With 4 years of experience in Product & Project Management, I've worked with enterprise clients across F&B, Telecom, EdTech, and FinTech.
           </p>
           <div class="d-flex flex-wrap gap-3 mt-4">
-            <button class="btn btn-warning" onclick="openModal('workHistory')"><i class="fas fa-briefcase me-2"></i>Work History</button>
-            <button class="btn btn-outline-warning" onclick="openModal('resume')"><i class="fas fa-file-alt me-2"></i>View Resume</button>
-            <button class="btn btn-warning" onclick="openModal('contact')"><i class="fas fa-envelope me-2"></i>Contact Me</button>
+            <button class="btn btn-warning" onclick="openModal('workHistory')">
+              <i class="fas fa-briefcase me-2"></i>Work History
+            </button>
+            <button class="btn btn-outline-warning" onclick="openModal('resume')">
+              <i class="fas fa-file-alt me-2"></i>View Resume
+            </button>
+            <a href="mailto:aryansharma73095@gmail.com" class="btn btn-warning">
+              <i class="fas fa-envelope me-2"></i>Contact Me
+            </a>
+            <a href="https://wa.me/7309544193?text=Hi%20Aryan!%20I%20saw%20your%20portfolio." target="_blank" class="btn fw-semibold" style="background-color: #25D366; color: white;">
+              <i class="fab fa-whatsapp me-2"></i>WhatsApp
+            </a>
           </div>
         </div>
         <div class="col-lg-5 text-center mt-5 mt-lg-0 hero-image-container" data-aos="fade-left" data-aos-delay="200">
@@ -696,14 +1105,13 @@
     <div class="container text-center">
       <h2 class="section-title" data-aos="fade-up">My Projects</h2>
       <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Here are a few examples of projects I've managed or developed.</p>
-      
       <div class="row g-4 justify-content-center">
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="card project-card">
             <img src="https://leptonsoftware.com/wp-content/uploads/2021/04/Lepton-white-logo-for-website.png" alt="Lepton Software">
             <div class="card-body text-start p-4">
               <h4>OneForce UI (WFM System)</h4>
-              <p class="small">Streamlined WFM flow and API requirements for Vi & Dialog, significantly reducing issue resolution time.</p>
+              <p class="small">Managed API requirements and development for Vi & Dialog WFM flow, enhancing operational efficiency.</p>
               <div class="project-tags">
                 <span class="project-tag">API Development</span>
                 <span class="project-tag">WFM</span>
@@ -711,18 +1119,17 @@
                 <span class="project-tag">Oracle SQL</span>
               </div>
               <div class="project-links mt-auto">
-                <a href="#" class="btn btn-sm btn-warning disabled" target="_blank" aria-disabled="true">Details upon Request (NDA)</a>
+                <a href="#" class="btn btn-sm btn-warning disabled" target="_blank" aria-disabled="true">Live Demo (NDA)</a>
               </div>
             </div>
           </div>
         </div>
-        
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
           <div class="card project-card">
             <img src="https://cdn.dotpe.in/dotpe-website-live/images/dotpe-white-logo-svg.svg" alt="DotPe">
             <div class="card-body text-start p-4">
               <h4>Enterprise API Integrations (DotPe)</h4>
-              <p class="small">Led end-to-end API integrations via PIPE for top F&B brands (McD, Blue Tokai), accelerating merchant onboarding.</p>
+              <p class="small">Led API integrations for major F&B clients (McD, Blue Tokai) with platforms like Swiggy & Zomato using PIPE.</p>
               <div class="project-tags">
                 <span class="project-tag">API Integration</span>
                 <span class="project-tag">F&B</span>
@@ -735,13 +1142,12 @@
             </div>
           </div>
         </div>
-        
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
           <div class="card project-card">
             <img src="https://www.skillvertex.com/pl2024/img/logo.png" alt="Skillvertex">
             <div class="card-body text-start p-4">
               <h4>Skillvertex Website Dev</h4>
-              <p class="small">Developed the front-end for an EdTech platform using WordPress, HTML/CSS, focusing on user experience and lead capture.</p>
+              <p class="small">Developed the front-end for an EdTech platform using WordPress, HTML/CSS, focusing on user experience.</p>
               <div class="project-tags">
                 <span class="project-tag">WordPress</span>
                 <span class="project-tag">HTML/CSS</span>
@@ -854,12 +1260,9 @@
         <div class="modal-body text-center">
           <p>You can download my resume or view it below:</p>
           <a href="aryan_sharma_resume.pdf" class="btn btn-warning mb-3" download>
-            <i class="fas fa-download me-2"></i>Download (PDF)
+            <i class="fas fa-download me-2"></i>Download Resume (PDF)
           </a>
-          <a href="aryan_sharma_resume.pdf" class="btn btn-outline-warning mb-3 ms-2" target="_blank">
-            <i class="fas fa-external-link-alt me-2"></i>Open in New Tab
-          </a>
-          <div class="iframe-container mt-3" style="position: relative; width: 100%; padding-bottom: 141.42%;">
+          <div class="iframe-container mt-3" style="position: relative; width: 100%; padding-bottom: 141.42%; /* A4 aspect ratio */">
             <iframe src="aryan_sharma_resume.pdf" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" title="Aryan Sharma Resume"></iframe>
           </div>
         </div>
@@ -890,7 +1293,6 @@
                 </ul>
               </div>
             </div>
-            
             <div class="timeline-item">
               <div class="company-logo">
                 <img src="https://leptonsoftware.com/wp-content/uploads/2021/04/Lepton-white-logo-for-website.png" alt="Lepton Software">
@@ -905,10 +1307,10 @@
                   <li>Utilizing Oracle SQL Developer & pgAdmin to analyze API errors and ticket issues.</li>
                   <li>Conducting API testing in Postman for functional validation.</li>
                   <li>Leading a team of 4 developers (backend & frontend).</li>
+                  <li>Working on MySQL, Postgres, APIs, and Inhouse tools.</li>
                 </ul>
               </div>
             </div>
-            
             <div class="timeline-item">
               <div class="company-logo">
                 <img src="https://cdn.dotpe.in/dotpe-website-live/images/dotpe-white-logo-svg.svg" alt="DotPe">
@@ -928,7 +1330,6 @@
                 </ul>
               </div>
             </div>
-            
             <div class="timeline-item">
               <div class="company-logo">
                 <img src="https://cdn.planetspark.in/assets/planetspark-logo-691be21aaf71832e7726422c207a4e5b0ff0012e8ca89c07f850a188a77d8ed8.webp" alt="Planet Spark">
@@ -942,7 +1343,6 @@
                 </ul>
               </div>
             </div>
-            
             <div class="timeline-item">
               <div class="company-logo">
                 <img src="https://www.skillvertex.com/pl2024/img/logo.png" alt="Skillvertex">
@@ -981,16 +1381,6 @@
               <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
-              <label for="subject" class="form-label">Subject</label>
-              <select class="form-select" id="subject" name="subject" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Hiring">Hiring / Job Opportunity</option>
-                <option value="Freelance">Freelance / Consulting</option>
-                <option value="Networking">Networking</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="mb-3">
               <label for="message" class="form-label">Message</label>
               <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
             </div>
@@ -1023,7 +1413,7 @@
       duration: 800,
       easing: 'ease-in-out-quad',
       once: true,
-      offset: 50
+      offset: 50 // trigger animations a bit sooner
     });
 
     // Theme toggle functionality
@@ -1057,7 +1447,8 @@
       }
 
       localStorage.setItem('theme', theme);
-      
+
+      // Re-initialize particles if they exist, with potentially different colors
       if (window.currentParticlesConfig) {
         loadParticles(window.currentParticlesConfig);
       }
@@ -1069,6 +1460,7 @@
       applyTheme(newTheme);
     }
 
+    // Load saved theme or default to system preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       applyTheme(savedTheme);
@@ -1078,6 +1470,7 @@
 
     prefersDarkScheme.addEventListener("change", (event) => {
       if (!localStorage.getItem('theme')) {
+        // Only if no user preference is set
         applyTheme(event.matches ? 'dark' : 'light');
       }
     });
@@ -1102,7 +1495,10 @@
     });
 
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
 
     // Modal functionality
@@ -1124,129 +1520,214 @@
       });
     }
 
-    // Updated loadParticles function (Fixed Theme Fallback Logic)
+    // Updated loadParticles function
     async function loadParticles(options) {
-      const activeTheme = localStorage.getItem('theme') || (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-      const particleColor = activeTheme === 'dark' ? "#f2b632" : "#333333";
-      const lineColor = activeTheme === 'dark' ? "#f2b632" : "#555555";
+      const theme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+      const particleColor = theme === 'dark' ? "#f2b632" : "#333333";
+      const lineColor = theme === 'dark' ? "#f2b632" : "#555555";
 
       await tsParticles.load("particles-js", {
         fpsLimit: 60,
         interactivity: {
           events: {
-            onHover: { enable: true, mode: "grab" },
-            onClick: { enable: true, mode: "push" },
+            onHover: {
+              enable: true,
+              mode: "grab",
+            },
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
             resize: true,
           },
           modes: {
-            grab: { distance: 140, links: { opacity: 0.7 } },
-            bubble: { distance: 200, size: 20, duration: 2, opacity: 0.8 },
-            repulse: { distance: 100, duration: 0.4 },
-            push: { quantity: 4 },
-            remove: { quantity: 2 },
+            grab: {
+              distance: 140,
+              links: {
+                opacity: 0.7,
+              },
+            },
+            bubble: {
+              distance: 200,
+              size: 20,
+              duration: 2,
+              opacity: 0.8,
+            },
+            repulse: {
+              distance: 100,
+              duration: 0.4,
+            },
+            push: {
+              quantity: 4,
+            },
+            remove: {
+              quantity: 2,
+            },
           },
         },
         particles: {
-          color: { value: particleColor },
-          links: { color: lineColor, distance: 150, enable: true, opacity: 0.2, width: 1 },
+          color: {
+            value: particleColor,
+          },
+          links: {
+            color: lineColor,
+            distance: 150,
+            enable: true,
+            opacity: 0.2,
+            width: 1,
+          },
           move: {
-            enable: true, speed: 1, direction: "none", random: true, straight: false,
-            outModes: { default: "out" },
-            attract: { enable: false, rotate: { x: 600, y: 1200 } },
+            enable: true,
+            speed: 1,
+            direction: "none",
+            random: true,
+            straight: false,
+            outModes: {
+              default: "out",
+            },
+            attract: {
+              enable: false,
+              rotate: {
+                x: 600,
+                y: 1200,
+              },
+            },
           },
-          number: { value: 60, density: { enable: true, area: 800 } },
+          number: {
+            value: 60,
+            density: {
+              enable: true,
+              area: 800,
+            },
+          },
           opacity: {
-            value: 0.4, random: true,
-            animation: { enable: true, speed: 0.5, minimumValue: 0.1, sync: false },
+            value: 0.4,
+            random: true,
+            animation: {
+              enable: true,
+              speed: 0.5,
+              minimumValue: 0.1,
+              sync: false,
+            },
           },
-          shape: { type: "circle" },
+          shape: {
+            type: "circle",
+          },
           size: {
-            value: 2, random: true,
-            animation: { enable: false, speed: 2, minimumValue: 0.3, sync: false },
+            value: 2,
+            random: true,
+            animation: {
+              enable: false,
+              speed: 2,
+              minimumValue: 0.3,
+              sync: false,
+            },
           },
         },
         detectRetina: true,
       });
     }
 
+    // Initialize particles after DOM content is loaded
     document.addEventListener("DOMContentLoaded", async () => {
       window.currentParticlesConfig = {};
       await loadParticles(window.currentParticlesConfig);
     });
 
-    // Contact Form Submission (Fixed JS Template Literals)
+    // Contact Form Submission (AJAX for Netlify)
     const contactForm = document.getElementById('contactForm');
-    const formStatusMessage = document.createElement('div');
+    const formStatusMessage = document.createElement('div'); // Create element for form status messages
     formStatusMessage.className = 'mt-3 small';
-    
-    if (contactForm) {
-      contactForm.appendChild(formStatusMessage);
-      contactForm.addEventListener('submit', async event => {
-        event.preventDefault();
 
+    if (contactForm) {
+      // Append the message element to the form
+      contactForm.appendChild(formStatusMessage);
+      
+      contactForm.addEventListener('submit', async event => {
+        event.preventDefault(); // Prevent the default browser submission
+
+        // --- 1. Clear previous messages and Get Form Data ---
         formStatusMessage.textContent = '';
-        formStatusMessage.className = 'mt-3 small';
+        formStatusMessage.className = 'mt-3 small'; // Reset classes, keep margin
+        
         const formData = new FormData(contactForm);
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.innerHTML;
 
+        // --- 2. Basic Client-Side Validation ---
         const name = formData.get('name').trim();
         const email = formData.get('email').trim();
         const message = formData.get('message').trim();
-        
         let errors = [];
+
         if (name === '') errors.push('Name is required.');
         if (email === '') {
           errors.push('Email is required.');
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          // Simple email format check
           errors.push('Please enter a valid email address.');
         }
         if (message === '') errors.push('Message is required.');
-        
+
         if (errors.length > 0) {
           formStatusMessage.textContent = 'Error: ' + errors.join(' ');
           formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
-          return;
+          return; // Stop if validation fails
         }
 
+        // --- 3. Prepare for Submission (UI feedback) ---
         submitButton.disabled = true;
         submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+        
         formStatusMessage.textContent = 'Sending your message...';
         formStatusMessage.classList.add('alert', 'alert-info', 'p-2');
 
         try {
+          // --- 4. AJAX Submission using Fetch ---
           const response = await fetch(contactForm.action, {
+            // Uses form's 'action' attribute
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            headers: {
+              // Netlify expects URL encoded data for simple forms submitted via AJAX
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            // Convert FormData to URL-encoded string
             body: new URLSearchParams(formData).toString(),
           });
 
           if (response.ok) {
+            // --- 5. Handle Successful Submission ---
             formStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
             formStatusMessage.classList.remove('alert-info');
             formStatusMessage.classList.add('alert', 'alert-success', 'p-2');
-            contactForm.reset();
+            contactForm.reset(); // Clear the form fields
+            console.log('Form submitted successfully via AJAX to Netlify.');
           } else {
-            const errorText = await response.text();
+            // --- 6. Handle Submission Error from Server ---
+            // You might get an error page HTML back from Netlify, or a specific status
+            const errorText = await response.text(); // Get more details if available
+            // FIXED: Added backticks around the template literal
             throw new Error(`Server error: ${response.status} ${response.statusText}. ${errorText}`);
           }
         } catch (error) {
+          // --- 7. Handle Network or Other Errors ---
           formStatusMessage.textContent = 'Sorry, there was an error sending your message. Please try again or contact me directly via email.';
           formStatusMessage.classList.remove('alert-info');
           formStatusMessage.classList.add('alert', 'alert-danger', 'p-2');
           console.error('Form submission error:', error);
         } finally {
+          // --- 8. Reset Button State ---
           submitButton.disabled = false;
           submitButton.innerHTML = originalButtonText;
         }
       });
     }
 
-    // Add active class to nav item based on scroll position (Fixed Template Literal)
+    // Add active class to nav item based on scroll position
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('section');
       const navLinks = document.querySelectorAll('.nav-link');
-      
+
       window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -1256,9 +1737,10 @@
             current = section.getAttribute('id');
           }
         });
-        
+
         navLinks.forEach(link => {
           link.classList.remove('active');
+          // FIXED: Added backticks around the template literal
           if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
           }
